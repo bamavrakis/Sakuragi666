@@ -4,18 +4,18 @@ Descripciones de los proyectos:
 
 > [https://github.com/IIC2143-2016-1/syllabus/tree/master/Proyectos](https://github.com/IIC2143-2016-1/syllabus/tree/master/Proyectos)
 
-Proyecto escogido: **[COMPLETAR]**.
+Proyecto escogido: **[Ebooks]**.
 
 
 ## Integrantes:
 
 Asegúrense de llenar lo siguiente:
 
-| Nº Alumno    | Nombre              | Email UC      | Github          |
-|:-------------|:--------------------|:--------------|:----------------|
-| 12345678     | Nombre apellido     | usuario@uc.cl | @ghusername     |
-| 12345678     | Nombre apellido     | usuario@uc.cl | @ghusername     |
-| 12345678     | Nombre apellido     | usuario@uc.cl | @ghusername     |
+| Nº Alumno    | Nombre              | Email UC          | Github          |
+|:-------------|:--------------------|:------------------|:----------------|
+| 13636286     | Germán Contreras    | glcontreras@uc.cl | @Geeermy        |
+| 13633082     | Óscar Estay         | oaestay@uc.cl     | @oaestay        |
+| 12345678     | Bastián Mavrakis    | bamavrakis@uc.cl  | @bamavrakis     |
 
 ## Instrucciones
 
