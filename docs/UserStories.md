@@ -1,26 +1,26 @@
 # User Stories
 
-#####Como usuario, quiero poder ingresar a mi perfil:
-	-Ver mi información
-	-Editar mi información
-	-Cambiar mis preferencias
-#####Como usuario, quiero poder ingresar a mi colección:
-	-Modificar mi colección (Agregar, Eliminar, y Editar libros)
-	-Ordenar libros de acuerdo a diversos criterios
-	-Clasificar libros por categoría
-	-Ver los detalles de cada libro en la colección
-	-Buscar libros en la colección
-#####Como usuario, quiero poder subir libros:
-	-Subir libros en distintos formatos
-	-Editar los tags y cover de mis libros
-	-Agregarlos a mi colección al subirlos
-#####Como usuario, quiero poder descargar libros:
-	-Descargarlos en distintos formatos
-	-Poder enviarlos a un correo electrónico mediante un link de descarga.
-#####Como usuario, quiero poder leer libros en línea:
-  	-Leerlos página por página
-  	-Ir a una página específica
-  	-Tener un marcador de páginas
-#####Como usuario, quiero poder ver libros públicos:
-  	-Verlos por categoría
-  	-Verlos por fecha de lanzamiento
+#####Como usuario, quiero poder ingresar a mi perfil: (Test: Verificar con un usuario falso, e ingresar al perfil)
+	-Ver mi información (Test: Ver la información en el perfil, y que concuerde con lo que se ingresó al crear/modificar el perfil)
+	-Editar mi información (Test: Editar el perfil falso, cambiando la contraseña, nombre, país, etc. y luego ver si los cambios fueron efectuados)
+	-Cambiar mis preferencias (Test: Cambiar las distintas preferencias y verificar que los cambios se mantengan al iniciar sesión nuevamente)
+#####Como usuario, quiero poder ingresar a mi colección: (Test: Ingresar a la colección del perfil falso)
+	-Modificar mi colección (Agregar, Eliminar, y Editar libros) (Test: Agregar un libro en formato pdf de unos 100 mB, verificar que quede en los archivos subidos del perfil falso, luego editar los tags del libro y chequear que los cambios se guarden. Finalmente eliminar el libro, y revisar la colección nuevamente, para revisar que no esté. Repetir estos pasos con formatos: epub, mobi, azw, etc.)
+	-Ordenar libros de acuerdo a diversos criterios (Test: Ordenar los libros por nombre, y verificar que estén ordenados cuando se renderice la página, repetir con los distintos criterios)
+	-Clasificar libros por categoría (Test: Agregar categorías a la colección del perfil falso, y agregar distintos libros a distintas categorías. Reloggearse en la aplicación y verificar que las clasificaciones se mantengan)
+	-Ver los detalles de cada libro en la colección (Test: Subir un libro y editar sus tags, luego ingresar a la colección y revisar que los datos que se muestren, concuerden con los tags editados)
+	-Buscar libros en la colección (Test: Subir entre 5 a 15 libros, y realizar búsquedas sobre ellos, verificando que los filtros se apliquen bien. Repetir esto para los distintos filtros)
+#####Como usuario, quiero poder subir libros: (Test: Agregar un libro de unos 100 mB, verificar que quede en los archivos subidos del perfil falso)
+	-Subir libros en distintos formatos (Test: Agregar un libro en formato pdf de unos 100 mB, verificar que quede en los archivos subidos del perfil falso. Repetir estos pasos con formatos: epub, mobi, azw, etc.)
+	-Editar los tags y cover de mis libros (Test: Agregar un libro a la colección, editar sus tags y cover. Reloggearse, y verificar la persistencia de los cambios)
+	-Agregarlos a mi colección al subirlos (Test: Agregar un libro, y luego verificar que se encuentre en la colección. Finalmente, verificar la persistencia después de reloggearse)
+#####Como usuario, quiero poder descargar libros: (Test: Agregar un libro, y luego descargarlo, verificando que el archivo sea el mismo que el archivo subido)
+	-Descargarlos en distintos formatos (Test: Agregar un libro en formato pdf, y luego descargarlo. Repetir estos pasos con formatos: epub, mobi, azw, etc.)
+	-Poder enviarlos a un correo electrónico mediante un link de descarga. (Test: Agregar un libro y enviar el link de descarga al mail asociado a la cuenta falsa. Usar el link para descargar el libro, y verificar que sea el libro correspondiente)
+#####Como usuario, quiero poder leer libros en línea: (Test: Agregar un libro, abrir el lector online, y verificar que el contenido sea el correspondiente)
+  	-Leerlos página por página (Test: Agregar un libro, abrir el lector online, revisar unas 50 páginas al azar, y verificar que sean las páginas correspondientes)
+  	-Ir a una página específica (Test: Agregar un libro, abrir el lector online, ir a una página al azar, y verificar que sea las página correspondiente. Repetir 30 veces)
+  	-Tener un marcador de páginas (Test: Agregar un libro, ir a una página al azar. Agregar un marcador en la página, reloggearse, y verificar la persistencia del marcador)
+#####Como usuario, quiero poder ver libros públicos: (Test: Buscar libros en la barra, leerlos, y verificar que sean los libros correspondientes)
+  	-Verlos por categoría (Test: Filtrar los libros por categoría, y verificar que los libros efectivamente pertenezcan a la categoría seleccionada)
+  	-Verlos por fecha de lanzamiento (Test: Ordernar los libros públis por fecha de lanzamiento, verificar el orden, y que las fechas de lanzamiento mostradas sean las correspondientes)
