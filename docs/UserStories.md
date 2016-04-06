@@ -18,9 +18,9 @@
 	-Descargarlos en distintos formatos
 	-Poder enviarlos a un correo electrónico mediante un link de descarga.
 #####Como usuario, quiero poder leer libros en línea:
-  -Leerlos página por página
-  -Ir a una página específica
-  -Tener un marcador de páginas
+  	-Leerlos página por página
+  	-Ir a una página específica
+  	-Tener un marcador de páginas
 #####Como usuario, quiero poder ver libros públicos:
-  -Verlos por categoría
-  -Verlos por fecha de lanzamiento
+  	-Verlos por categoría
+  	-Verlos por fecha de lanzamiento
