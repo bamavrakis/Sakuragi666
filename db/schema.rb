@@ -19,11 +19,11 @@ ActiveRecord::Schema.define(version: 20160501212909) do
     t.boolean  "private"
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
-    t.integer  "user_id"
     t.string   "document_file_name"
     t.string   "document_content_type"
     t.integer  "document_file_size"
     t.datetime "document_updated_at"
+    t.integer  "user_id"
   end
 
   add_index "books", ["user_id"], name: "index_books_on_user_id"
