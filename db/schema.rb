@@ -11,15 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160501194924) do
+ActiveRecord::Schema.define(version: 20160501212909) do
 
   create_table "books", force: :cascade do |t|
     t.string   "name"
-    t.integer  "popularity"
+    t.integer  "popularity",            default: 0
     t.boolean  "private"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
     t.integer  "user_id"
+    t.string   "document_file_name"
+    t.string   "document_content_type"
+    t.integer  "document_file_size"
+    t.datetime "document_updated_at"
   end
 
   add_index "books", ["user_id"], name: "index_books_on_user_id"
