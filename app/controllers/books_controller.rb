@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update, :destroy]
-  has_scope :public, :type => :boolean
+  has_scope :public_books, :type => :boolean
 
   # GET /books
   # GET /books.json

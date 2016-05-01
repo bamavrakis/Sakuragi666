@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  # HACER BIEN LAS RUTAS LIBROS-USUARIO, MEJOR HACERLO MANUAL!
   resources :tags
   resources :books
   get 'welcome/index'
