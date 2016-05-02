@@ -5,7 +5,7 @@ class BooksController < ApplicationController
   # GET /books
   # GET /books.json
   def index
-    @books = apply_scopes(Book).all
+    @books = apply_scopes(Book).all.paginate(page: params[:page], per_page: 5)
   end
 
   # GET /books/1

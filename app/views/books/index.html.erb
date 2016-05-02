@@ -3,7 +3,7 @@
 <h1>Listing Books</h1>
 
 <h3>Public eBooks</h3>
-
+<%= will_paginate @books %>
 <table>
   <thead>
     <tr>
@@ -29,8 +29,9 @@
     <% end %>
   </tbody>
 </table>
+<%= will_paginate @books %>
 
-
+<%= will_paginate @books %>
 <h3> Your eBooks</h3>
 
 <table>
@@ -58,6 +59,7 @@
     <% end %>
   </tbody>
 </table>
+<%= will_paginate @books %>
 <br>
 
 <%= link_to 'New Book', new_book_path %>
