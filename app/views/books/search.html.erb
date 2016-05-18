@@ -1,0 +1,7 @@
+<h1>El resultado de tu búsqueda:</h1>
+<% @searched_books.each do |book| %>
+  <p>
+    <strong>Name:</strong>
+    <%= book.name %>
+  </p>
+<% end %>

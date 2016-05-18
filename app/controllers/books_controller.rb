@@ -66,6 +66,11 @@ class BooksController < ApplicationController
     end
   end
 
+  # Books searching (for now, only by book title).
+  def search
+    @searched_books = Book.public_books.where("name like ?", '%' + search_params[:name] + '%')
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_book
@@ -75,6 +80,10 @@ class BooksController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def book_params
       params.require(:book).permit(:name, :popularity, :private, :document)
+    end
+
+    def search_params
+        params.require(:book).permit(:name)
     end
 
 end
