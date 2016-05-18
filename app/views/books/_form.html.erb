@@ -11,19 +11,19 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :name %><br>
     <%= f.text_field :name %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :private %><br>
     <%= f.check_box :private %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :document %><br>
     <%= f.file_field :document%>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "New Book", class: "btn btn-default" %>
   </div>
 <% end %>

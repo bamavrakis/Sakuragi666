@@ -6,8 +6,8 @@ class BooksController < ApplicationController
   # GET /books
   # GET /books.json
   def index
-    @books = Book.public_books.paginate(page: params[:books_page], per_page: 10)
-    @my_books = current_user.books.paginate(per_page: 10, page: params[:my_books_page])
+    @books = Book.public_books.paginate(page: params[:books_page], per_page: 9)
+    @my_books = current_user.uploaded_books.paginate(page: params[:my_books_page], per_page: 9)
   end
 
   # GET /books/1
@@ -30,7 +30,7 @@ class BooksController < ApplicationController
   # POST /books.json
   def create
     @book = Book.new(book_params)
-    @book.user = current_user
+    @book.uploader = current_user
     respond_to do |format|
       if @book.save
         format.html { redirect_to @book, notice: 'Book was successfully created.' }

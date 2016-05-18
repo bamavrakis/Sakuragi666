@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160517223734) do
+ActiveRecord::Schema.define(version: 20160518162317) do
 
   create_table "books", force: :cascade do |t|
     t.string   "name"
@@ -23,14 +23,28 @@ ActiveRecord::Schema.define(version: 20160517223734) do
     t.string   "document_content_type"
     t.integer  "document_file_size"
     t.datetime "document_updated_at"
-    t.integer  "user_id"
     t.string   "thumbnail_file_name"
     t.string   "thumbnail_content_type"
     t.integer  "thumbnail_file_size"
     t.datetime "thumbnail_updated_at"
+    t.integer  "uploader_id"
   end
 
-  add_index "books", ["user_id"], name: "index_books_on_user_id"
+  create_table "books_tags", id: false, force: :cascade do |t|
+    t.integer "book_id"
+    t.integer "tag_id"
+  end
+
+  add_index "books_tags", ["book_id"], name: "index_books_tags_on_book_id"
+  add_index "books_tags", ["tag_id"], name: "index_books_tags_on_tag_id"
+
+  create_table "books_users", id: false, force: :cascade do |t|
+    t.integer "book_id"
+    t.integer "user_id"
+  end
+
+  add_index "books_users", ["book_id"], name: "index_books_users_on_book_id"
+  add_index "books_users", ["user_id"], name: "index_books_users_on_user_id"
 
   create_table "tags", force: :cascade do |t|
     t.string   "name"

@@ -1,6 +1,7 @@
 class Book < ActiveRecord::Base
-  belongs_to :user
+  belongs_to :uploader, :class_name => 'User'
   has_and_belongs_to_many :tags
+  has_and_belongs_to_many :users
   scope :public_books, -> { where(:private => false) }
   has_attached_file :document
   validates_attachment_content_type :document, :content_type => "application/pdf", :size => { :in => 0..350.megabytes }

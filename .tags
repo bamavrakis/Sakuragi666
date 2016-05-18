@@ -1,0 +1,66 @@
+* Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets	/Users/Oscarin/Tareas y proyectos/Ingeniería de Software/sakuragi/app/assets/stylesheets/application.css	/^ * Any CSS and SCSS file within this directory, lib\/assets\/stylesheets, vendor\/assets\/stylesheets,$/;"	function	line:5
+body	/Users/Oscarin/Tareas y proyectos/Ingeniería de Software/sakuragi/app/assets/stylesheets/application.css	/^body {$/;"	function	line:18
+p, ol, ul, td	/Users/Oscarin/Tareas y proyectos/Ingeniería de Software/sakuragi/app/assets/stylesheets/application.css	/^p, ol, ul, td {$/;"	function	line:26
+#wrapper	/Users/Oscarin/Tareas y proyectos/Ingeniería de Software/sakuragi/app/assets/stylesheets/application.css	/^#wrapper {$/;"	function	line:32
+#wrapper.toggled	/Users/Oscarin/Tareas y proyectos/Ingeniería de Software/sakuragi/app/assets/stylesheets/application.css	/^#wrapper.toggled {$/;"	function	line:40
+#sidebar-wrapper	/Users/Oscarin/Tareas y proyectos/Ingeniería de Software/sakuragi/app/assets/stylesheets/application.css	/^#sidebar-wrapper {$/;"	function	line:44
+#wrapper.toggled #sidebar-wrapper	/Users/Oscarin/Tareas y proyectos/Ingeniería de Software/sakuragi/app/assets/stylesheets/application.css	/^#wrapper.toggled #sidebar-wrapper {$/;"	function	line:59
+#page-content-wrapper	/Users/Oscarin/Tareas y proyectos/Ingeniería de Software/sakuragi/app/assets/stylesheets/application.css	/^#page-content-wrapper {$/;"	function	line:63
+#wrapper.toggled #page-content-wrapper	/Users/Oscarin/Tareas y proyectos/Ingeniería de Software/sakuragi/app/assets/stylesheets/application.css	/^#wrapper.toggled #page-content-wrapper {$/;"	function	line:69
+.sidebar-nav	/Users/Oscarin/Tareas y proyectos/Ingeniería de Software/sakuragi/app/assets/stylesheets/application.css	/^.sidebar-nav {$/;"	function	line:76
+.sidebar-nav li	/Users/Oscarin/Tareas y proyectos/Ingeniería de Software/sakuragi/app/assets/stylesheets/application.css	/^.sidebar-nav li {$/;"	function	line:85
+.sidebar-nav li a	/Users/Oscarin/Tareas y proyectos/Ingeniería de Software/sakuragi/app/assets/stylesheets/application.css	/^.sidebar-nav li a {$/;"	function	line:90
+.sidebar-nav li a:hover	/Users/Oscarin/Tareas y proyectos/Ingeniería de Software/sakuragi/app/assets/stylesheets/application.css	/^.sidebar-nav li a:hover {$/;"	function	line:96
+.sidebar-nav li a:active	/Users/Oscarin/Tareas y proyectos/Ingeniería de Software/sakuragi/app/assets/stylesheets/application.css	/^.sidebar-nav li a:active,$/;"	function	line:102
+.sidebar-nav li a:focus	/Users/Oscarin/Tareas y proyectos/Ingeniería de Software/sakuragi/app/assets/stylesheets/application.css	/^.sidebar-nav li a:focus {$/;"	function	line:103
+.sidebar-nav > .sidebar-brand	/Users/Oscarin/Tareas y proyectos/Ingeniería de Software/sakuragi/app/assets/stylesheets/application.css	/^.sidebar-nav > .sidebar-brand {$/;"	function	line:107
+.sidebar-nav > .sidebar-brand a	/Users/Oscarin/Tareas y proyectos/Ingeniería de Software/sakuragi/app/assets/stylesheets/application.css	/^.sidebar-nav > .sidebar-brand a {$/;"	function	line:112
+.sidebar-nav > .sidebar-brand a:hover	/Users/Oscarin/Tareas y proyectos/Ingeniería de Software/sakuragi/app/assets/stylesheets/application.css	/^.sidebar-nav > .sidebar-brand a:hover {$/;"	function	line:116
+@media(min-width:768px)	/Users/Oscarin/Tareas y proyectos/Ingeniería de Software/sakuragi/app/assets/stylesheets/application.css	/^@media(min-width:768px) {$/;"	function	line:121
+#wrapper	/Users/Oscarin/Tareas y proyectos/Ingeniería de Software/sakuragi/app/assets/stylesheets/application.css	/^    #wrapper {$/;"	function	line:122
+#wrapper.toggled	/Users/Oscarin/Tareas y proyectos/Ingeniería de Software/sakuragi/app/assets/stylesheets/application.css	/^    #wrapper.toggled {$/;"	function	line:126
+#sidebar-wrapper	/Users/Oscarin/Tareas y proyectos/Ingeniería de Software/sakuragi/app/assets/stylesheets/application.css	/^    #sidebar-wrapper {$/;"	function	line:130
+#wrapper.toggled #sidebar-wrapper	/Users/Oscarin/Tareas y proyectos/Ingeniería de Software/sakuragi/app/assets/stylesheets/application.css	/^    #wrapper.toggled #sidebar-wrapper {$/;"	function	line:134
+#page-content-wrapper	/Users/Oscarin/Tareas y proyectos/Ingeniería de Software/sakuragi/app/assets/stylesheets/application.css	/^    #page-content-wrapper {$/;"	function	line:138
+#wrapper.toggled #page-content-wrapper	/Users/Oscarin/Tareas y proyectos/Ingeniería de Software/sakuragi/app/assets/stylesheets/application.css	/^    #wrapper.toggled #page-content-wrapper {$/;"	function	line:143
+.avatar	/Users/Oscarin/Tareas y proyectos/Ingeniería de Software/sakuragi/app/assets/stylesheets/application.css	/^.avatar {$/;"	function	line:149
+.avatar img	/Users/Oscarin/Tareas y proyectos/Ingeniería de Software/sakuragi/app/assets/stylesheets/application.css	/^.avatar img{$/;"	function	line:155
+.user-name	/Users/Oscarin/Tareas y proyectos/Ingeniería de Software/sakuragi/app/assets/stylesheets/application.css	/^.user-name{$/;"	function	line:164
+#menu-toggle	/Users/Oscarin/Tareas y proyectos/Ingeniería de Software/sakuragi/app/assets/stylesheets/application.css	/^#menu-toggle{$/;"	function	line:171
+.flash	/Users/Oscarin/Tareas y proyectos/Ingeniería de Software/sakuragi/app/assets/stylesheets/application.css	/^.flash{$/;"	function	line:175
+#flash_error, #flash_alert	/Users/Oscarin/Tareas y proyectos/Ingeniería de Software/sakuragi/app/assets/stylesheets/application.css	/^#flash_error, #flash_alert{$/;"	function	line:184
+#flash_success, #flash_notice	/Users/Oscarin/Tareas y proyectos/Ingeniería de Software/sakuragi/app/assets/stylesheets/application.css	/^#flash_success, #flash_notice{$/;"	function	line:190
+.row-centered	/Users/Oscarin/Tareas y proyectos/Ingeniería de Software/sakuragi/app/assets/stylesheets/application.css	/^.row-centered {$/;"	function	line:198
+.col-centered	/Users/Oscarin/Tareas y proyectos/Ingeniería de Software/sakuragi/app/assets/stylesheets/application.css	/^.col-centered {$/;"	function	line:201
+.col-fixed	/Users/Oscarin/Tareas y proyectos/Ingeniería de Software/sakuragi/app/assets/stylesheets/application.css	/^.col-fixed {$/;"	function	line:209
+.col-min	/Users/Oscarin/Tareas y proyectos/Ingeniería de Software/sakuragi/app/assets/stylesheets/application.css	/^.col-min {$/;"	function	line:213
+.col-max	/Users/Oscarin/Tareas y proyectos/Ingeniería de Software/sakuragi/app/assets/stylesheets/application.css	/^.col-max {$/;"	function	line:217
+.clearfix	/Users/Oscarin/Tareas y proyectos/Ingeniería de Software/sakuragi/app/assets/stylesheets/application.css	/^.clearfix{$/;"	function	line:222
+.center	/Users/Oscarin/Tareas y proyectos/Ingeniería de Software/sakuragi/app/assets/stylesheets/application.css	/^.center {$/;"	function	line:225
+.center form	/Users/Oscarin/Tareas y proyectos/Ingeniería de Software/sakuragi/app/assets/stylesheets/application.css	/^.center form {$/;"	function	line:229
+.center form .field	/Users/Oscarin/Tareas y proyectos/Ingeniería de Software/sakuragi/app/assets/stylesheets/application.css	/^.center form .field{$/;"	function	line:233
+.book	/Users/Oscarin/Tareas y proyectos/Ingeniería de Software/sakuragi/app/assets/stylesheets/application.css	/^.book{$/;"	function	line:237
+.book p	/Users/Oscarin/Tareas y proyectos/Ingeniería de Software/sakuragi/app/assets/stylesheets/application.css	/^.book p{$/;"	function	line:240
+.book img	/Users/Oscarin/Tareas y proyectos/Ingeniería de Software/sakuragi/app/assets/stylesheets/application.css	/^.book img{$/;"	function	line:243
+#nav-icon1	/Users/Oscarin/Tareas y proyectos/Ingeniería de Software/sakuragi/app/assets/stylesheets/application.css	/^#nav-icon1{$/;"	function	line:247
+#nav-icon1 span	/Users/Oscarin/Tareas y proyectos/Ingeniería de Software/sakuragi/app/assets/stylesheets/application.css	/^#nav-icon1 span{$/;"	function	line:264
+#nav-icon1 span:nth-child(1)	/Users/Oscarin/Tareas y proyectos/Ingeniería de Software/sakuragi/app/assets/stylesheets/application.css	/^#nav-icon1 span:nth-child(1) {$/;"	function	line:282
+#nav-icon1 span:nth-child(2)	/Users/Oscarin/Tareas y proyectos/Ingeniería de Software/sakuragi/app/assets/stylesheets/application.css	/^#nav-icon1 span:nth-child(2) {$/;"	function	line:286
+#nav-icon1 span:nth-child(3)	/Users/Oscarin/Tareas y proyectos/Ingeniería de Software/sakuragi/app/assets/stylesheets/application.css	/^#nav-icon1 span:nth-child(3) {$/;"	function	line:290
+#nav-icon1.open span:nth-child(1)	/Users/Oscarin/Tareas y proyectos/Ingeniería de Software/sakuragi/app/assets/stylesheets/application.css	/^#nav-icon1.open span:nth-child(1) {$/;"	function	line:294
+#nav-icon1.open span:nth-child(2)	/Users/Oscarin/Tareas y proyectos/Ingeniería de Software/sakuragi/app/assets/stylesheets/application.css	/^#nav-icon1.open span:nth-child(2) {$/;"	function	line:301
+#nav-icon1.open span:nth-child(3)	/Users/Oscarin/Tareas y proyectos/Ingeniería de Software/sakuragi/app/assets/stylesheets/application.css	/^#nav-icon1.open span:nth-child(3) {$/;"	function	line:306
+#logo-mini	/Users/Oscarin/Tareas y proyectos/Ingeniería de Software/sakuragi/app/assets/stylesheets/application.css	/^#logo-mini{$/;"	function	line:314
+#logo	/Users/Oscarin/Tareas y proyectos/Ingeniería de Software/sakuragi/app/assets/stylesheets/application.css	/^#logo{$/;"	function	line:320
+.book-index-name	/Users/Oscarin/Tareas y proyectos/Ingeniería de Software/sakuragi/app/assets/stylesheets/books.scss	/^.book-index-name{$/;"	function	line:5
+.book-thumbnail	/Users/Oscarin/Tareas y proyectos/Ingeniería de Software/sakuragi/app/assets/stylesheets/books.scss	/^.book-thumbnail{$/;"	function	line:10
+BooksController	/Users/Oscarin/Tareas y proyectos/Ingeniería de Software/sakuragi/app/controllers/books_controller.rb	/^class BooksController < ApplicationController$/;"	class	line:1
+index	/Users/Oscarin/Tareas y proyectos/Ingeniería de Software/sakuragi/app/controllers/books_controller.rb	/^  def index$/;"	method	line:8	class:BooksController
+show	/Users/Oscarin/Tareas y proyectos/Ingeniería de Software/sakuragi/app/controllers/books_controller.rb	/^  def show$/;"	method	line:15	class:BooksController
+new	/Users/Oscarin/Tareas y proyectos/Ingeniería de Software/sakuragi/app/controllers/books_controller.rb	/^  def new$/;"	method	line:21	class:BooksController
+edit	/Users/Oscarin/Tareas y proyectos/Ingeniería de Software/sakuragi/app/controllers/books_controller.rb	/^  def edit$/;"	method	line:26	class:BooksController
+create	/Users/Oscarin/Tareas y proyectos/Ingeniería de Software/sakuragi/app/controllers/books_controller.rb	/^  def create$/;"	method	line:31	class:BooksController
+update	/Users/Oscarin/Tareas y proyectos/Ingeniería de Software/sakuragi/app/controllers/books_controller.rb	/^  def update$/;"	method	line:47	class:BooksController
+destroy	/Users/Oscarin/Tareas y proyectos/Ingeniería de Software/sakuragi/app/controllers/books_controller.rb	/^  def destroy$/;"	method	line:61	class:BooksController
+set_book	/Users/Oscarin/Tareas y proyectos/Ingeniería de Software/sakuragi/app/controllers/books_controller.rb	/^    def set_book$/;"	method	line:71	class:BooksController
+book_params	/Users/Oscarin/Tareas y proyectos/Ingeniería de Software/sakuragi/app/controllers/books_controller.rb	/^    def book_params$/;"	method	line:76	class:BooksController

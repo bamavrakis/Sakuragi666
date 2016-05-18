@@ -16,10 +16,9 @@
                     <li class="sidebar-brand">
                         <div class="user-info-index">
                             <div class="avatar">
-                                <%= image_tag(current_user.avatar.url(:small)) %>
+                                <%= link_to image_tag(current_user.avatar.url(:small)), edit_user_registration_path %>
                             </div>
-                            <h2 class="user-name"><%= current_user.name %>
-                                <%= current_user.last_name %></h2>
+                            <h2 class="user-name"><%= link_to current_user.name + ' ' + current_user.last_name, edit_user_registration_path %></h2>
                         </div>
                     </li>
                     <li>
@@ -47,6 +46,9 @@
                 </li>
                 <% end %>
             </ul>
+            <div id="logo-mini">
+              <%= image_tag("logo_mini.png") %>
+            </div>
         </div>
         <!-- /#sidebar-wrapper -->
         <!-- Page Content -->
@@ -60,15 +62,13 @@
                     <% if alert %>
                 <p class="alert" <%= alert %></p>
                 <% end %>
-                <% if flash.count > 0 %>
-                <div id="flash">
                 <%- flash.each do |name, msg| -%>
-                <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
-              </div>
+                  <%= content_tag :div, msg, :id => "flash_#{name}", :class => "flash" if msg.is_a?(String) %>
                 <%- end -%>
-                <% end %>
-                <div class="icon-rise">
-                  <a href="#menu-toggle" id="menu-toggle"><%= image_tag 'logo.png' %></a>
+                <div id="nav-icon1" class="open">
+                  <span></span>
+                  <span></span>
+                  <span></span>
                 </div>
                 <%= yield %>
             </div>
@@ -78,9 +78,10 @@
 <!-- /#wrapper -->
 </div>
 <script>
-$("#menu-toggle").click(function (e) {
-    e.preventDefault();
-    $("#wrapper").toggleClass("toggled");
+$('#nav-icon1').click(function(e){
+	$(this).toggleClass('open');
+  e.preventDefault();
+  $("#wrapper").toggleClass("toggled");
 });
 </script>
 </body>

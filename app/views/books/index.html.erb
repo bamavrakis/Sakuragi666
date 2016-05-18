@@ -1,47 +1,43 @@
-<h1>Books</h1>
 <div class="clearfix"></div>
 <div class="row">
+    <h1 class="text-center">Books</h1>
 
-<div class="col-xs-6">
-<h3 class="text-center">Public eBooks</h3>
-    <% @books.each do |book| %>
+    <div class="col-xs-6">
+        <h3 class="text-center">Public eBooks</h3>
+        <% @books.each do |book| %>
         <div class="book col-lg-4 col-md-6 col-xs-6 ">
-          <p class="text-center"><%= link_to book.name, book %></p>
-          <%= link_to image_tag(book.thumbnail.url(:small)), book %>
-          <% if(book.user == current_user) %>
-            <%= link_to 'Edit', edit_book_path(book) %>
-            <%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %>
-          <% end %>
-      </div>
-    <% end %>
-</div>
-<div class="col-xs-6">
+            <p class="text-center book-index-name"><%= link_to book.name, book %></p>
+            <%= link_to image_tag(book.thumbnail.url(:small), class: "book-thumbnail"), book %>
+        </div>
+        <% end %>
+    </div>
+    <div class="col-xs-6">
 
-<h3 class="text-center"> Your eBooks</h3>
-    <% @my_books.each do |book| %>
+        <h3 class="text-center">
+            Your eBooks</h3>
+        <% @my_books.each do |book| %>
         <div class="book col-lg-4 col-md-5 col-xs-6 ">
-          <p class="text-center"><%= link_to book.name, book %></p>
-          <%= link_to image_tag(book.thumbnail.url(:small)), book %>
-          <% if(book.user == current_user) %>
-            <%= link_to 'Edit', edit_book_path(book) %>
-            <%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %>
-          <% end %>
-      </div>
-    <% end %>
-  </tbody>
-</table>
-<br>
-</div>
+            <p class="text-center book-index-name"><%= link_to book.name, book %>
+                <% if(book.uploader == current_user && !book.private) %>
+                <%= link_to image_tag("edit.png"), edit_book_path(book) %>
+                <%= link_to image_tag("remove.png"), book, method: :delete, data: { confirm: 'Are you sure?' } %>
+                <% end %>
+            </p>
+            <%= link_to image_tag(book.thumbnail.url(:small), class: "book-thumbnail"), book %>
+        </div>
+        <% end %>
+        <br>
+    </div>
 </div>
 <div class="row">
-  <div class="col-xs-6">
-    <div class="will_paginate">
-      <%= will_paginate @books, :param_name => 'books_page' %>
+    <div class="col-xs-6">
+        <div class="will_paginate">
+            <%= will_paginate @books, :param_name => 'books_page' %>
+        </div>
     </div>
-  </div>
-  <div class="col-xs-6">
-    <div class="will_paginate">
-      <%= will_paginate @my_books, :param_name => 'my_books_page' %>
+    <div class="col-xs-6">
+        <div class="will_paginate">
+            <%= will_paginate @my_books, :param_name => 'my_books_page' %>
+        </div>
     </div>
-  </div>
 </div>
