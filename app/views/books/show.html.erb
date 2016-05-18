@@ -5,15 +5,13 @@
   <%= @book.name %>
 </p>
 
-<p>
-  <strong>Popularity:</strong>
-  <%= @book.popularity %>
-</p>
+<!-- <% @reader.pages.each do |page| %>
+    <%= page.text %>
+<% end %> -->
 
-<p>
-  <strong>Private:</strong>
-  <%= @book.private %>
-</p>
+<%= link_to "display using the full viewer", pdfjs.full_path(file: @book.document.url) %>
+<%= link_to "display using the minimal viewer", pdfjs.minimal_path(file: @book.document.url) %>
+
 
 <%= link_to 'Edit', edit_book_path(@book) %> |
 <%= link_to 'Back', books_path %>

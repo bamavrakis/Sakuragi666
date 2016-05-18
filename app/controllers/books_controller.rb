@@ -1,16 +1,20 @@
 class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
   has_scope :public_books, :type => :boolean
 
   # GET /books
   # GET /books.json
   def index
-    @books = apply_scopes(Book).all.paginate(page: params[:page], per_page: 5)
+    @books = Book.public_books.paginate(page: params[:books_page], per_page: 10)
+    @my_books = current_user.books.paginate(per_page: 10, page: params[:my_books_page])
   end
 
   # GET /books/1
   # GET /books/1.json
   def show
+    @book = Book.find(params[:id])
+    @reader = PDF::Reader.new(open(@book.document.path))
   end
 
   # GET /books/new
@@ -72,4 +76,5 @@ class BooksController < ApplicationController
     def book_params
       params.require(:book).permit(:name, :popularity, :private, :document)
     end
+
 end

@@ -1,66 +1,47 @@
-<p id="notice"><%= notice %></p>
+<h1>Books</h1>
+<div class="clearfix"></div>
+<div class="row">
 
-<h1>Listing Books</h1>
-
-<h3>Public eBooks</h3>
-<%= will_paginate @books %>
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Popularity</th>
-      <th>Private</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+<div class="col-xs-6">
+<h3 class="text-center">Public eBooks</h3>
     <% @books.each do |book| %>
-      <% if !book.private?%>
-        <tr>
-          <td><%= book.name %></td>
-          <td><%= book.popularity %></td>
-          <td><%= book.private %></td>
-          <td><%= link_to 'Show', book %></td>
-          <td><%= link_to 'Edit', edit_book_path(book) %></td>
-          <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-      <% end %>
+        <div class="book col-lg-4 col-md-6 col-xs-6 ">
+          <p class="text-center"><%= link_to book.name, book %></p>
+          <%= link_to image_tag(book.thumbnail.url(:small)), book %>
+          <% if(book.user == current_user) %>
+            <%= link_to 'Edit', edit_book_path(book) %>
+            <%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% end %>
+      </div>
+    <% end %>
+</div>
+<div class="col-xs-6">
+
+<h3 class="text-center"> Your eBooks</h3>
+    <% @my_books.each do |book| %>
+        <div class="book col-lg-4 col-md-5 col-xs-6 ">
+          <p class="text-center"><%= link_to book.name, book %></p>
+          <%= link_to image_tag(book.thumbnail.url(:small)), book %>
+          <% if(book.user == current_user) %>
+            <%= link_to 'Edit', edit_book_path(book) %>
+            <%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% end %>
+      </div>
     <% end %>
   </tbody>
 </table>
-<%= will_paginate @books %>
-
-<%= will_paginate @books %>
-<h3> Your eBooks</h3>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Popularity</th>
-      <th>Private</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @books.each do |book| %>
-      <% if book.private? && book.user_id == current_user.id %>
-        <tr>
-          <td><%= book.name %></td>
-          <td><%= book.popularity %></td>
-          <td><%= book.private %></td>
-          <td><%= link_to 'Show', book %></td>
-          <td><%= link_to 'Edit', edit_book_path(book) %></td>
-          <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-      <% end %>
-    <% end %>
-  </tbody>
-</table>
-<%= will_paginate @books %>
 <br>
-
-<%= link_to 'New Book', new_book_path %>
-<%= link_to 'Home', root_path %>
+</div>
+</div>
+<div class="row">
+  <div class="col-xs-6">
+    <div class="will_paginate">
+      <%= will_paginate @books, :param_name => 'books_page' %>
+    </div>
+  </div>
+  <div class="col-xs-6">
+    <div class="will_paginate">
+      <%= will_paginate @my_books, :param_name => 'my_books_page' %>
+    </div>
+  </div>
+</div>
