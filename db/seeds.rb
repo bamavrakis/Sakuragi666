@@ -5,13 +5,14 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-require 'RMagick'
+require 'rmagick'
 
 file = File.open("app/assets/documents/test.pdf")
 pdf = Magick::ImageList.new("app/assets/documents/test.pdf")
 thumb = pdf.scale(340, 440)
 thumb.write "app/assets/documents/test.png"
 User.create(email: "oscar@oscar.cl", name: "Oscar", last_name: "Estay", kind: "user", password: "password", password_confirmation: "password", avatar: File.new("app/assets/images/bad_joke.png"))
+User.create(email: "bastian@bastian.cl", name: "Bastian", last_name: "Mavrakis", kind: "user", password: "password", password_confirmation: "password", avatar: File.new("app/assets/images/bad_joke.png"))
 Book.create(uploader_id: 1, name: "Test 0", private: true, document: file, thumbnail: File.new("app/assets/documents/test.png"))
 Book.create(uploader_id: 1, name: "Test 1", private: true, document: file, thumbnail: File.new("app/assets/documents/test.png"))
 Book.create(uploader_id: 1, name: "Test 2", private: true, document: file, thumbnail: File.new("app/assets/documents/test.png"))

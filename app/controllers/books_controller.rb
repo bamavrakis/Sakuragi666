@@ -15,6 +15,13 @@ class BooksController < ApplicationController
   def show
     @book = Book.find(params[:id])
     @reader = PDF::Reader.new(open(@book.document.path))
+    Cloudconvert.configure do |config|
+        config.api_key  = "RpZNlEckdEIJWv3GG0z4pX1BdqvJV1Lp1DzzZdvABlsmpXrjR0rqpb36-gNWDcm3nSTwY2tObtb6GoMZnBuX9A"
+    end
+    conversion = Cloudconvert::Conversion.new
+
+    
+
   end
 
   # GET /books/new
