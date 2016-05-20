@@ -5,7 +5,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.5.1'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
-gem 'cloudconvert'
+gem 'cloudconvert-ruby'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 gem 'autoprefixer-rails'

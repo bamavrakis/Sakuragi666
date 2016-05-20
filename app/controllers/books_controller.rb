@@ -15,12 +15,36 @@ class BooksController < ApplicationController
   def show
     @book = Book.find(params[:id])
     @reader = PDF::Reader.new(open(@book.document.path))
-    Cloudconvert.configure do |config|
-        config.api_key  = "RpZNlEckdEIJWv3GG0z4pX1BdqvJV1Lp1DzzZdvABlsmpXrjR0rqpb36-gNWDcm3nSTwY2tObtb6GoMZnBuX9A"
-    end
-    conversion = Cloudconvert::Conversion.new
+
+    @file = Rails.public_path + @book.document.path
+
+    @client = CloudConvert::Client.new(api_key: "RpZNlEckdEIJWv3GG0z4pX1BdqvJV1Lp1DzzZdvABlsmpXrjR0rqpb36-gNWDcm3nSTwY2tObtb6GoMZnBuX9A")
+    @process = @client.build_process(input_format: :pdf, output_format: :pdf)
+    @process_response = @process.create
+    @conversion_response = @process.convert(
+        input: "upload",
+        outputformat: :pdf,
+        file: @file,
+        download: "false"
+    )
+
+
+
 
     
+
+
+    #sleep 10
+
+    #path = File.join(File.dirname(__FILE__), "output")
+    #@download = @process.download_url
+    #@converted = RGhost::Convert.new(@book.document.path).to :azw
+    #File.open(@converted, 'rb') do |f|
+    #send_data f.read
+
+
+  
+
 
   end
 

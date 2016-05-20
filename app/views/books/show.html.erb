@@ -11,12 +11,12 @@
 
 <%= link_to "display using the full viewer", pdfjs.full_path(file: @book.document.url) %>
 <%= link_to "display using the minimal viewer", pdfjs.minimal_path(file: @book.document.url) %>
-<%= link_to "download book as pdf", @book.document.url %>
-<%= link_to "download book as epub", @book.document.url %>
-<%= link_to "download book as mobi", @book.document.url %>
-<%= link_to "download book as azw", @download_url %>
+<%= link_to "download book as pdf", @converted %>
+<%= link_to "download book as jpeg", @converted %>
+<%= link_to "download book as mobi", @converted  %>
+<%= link_to "download book as azw", @converted  %>
 
-
+<%=@status_response%>
 
 <%= link_to 'Edit', edit_book_path(@book) %> |
 <%= link_to 'Back', books_path %>
