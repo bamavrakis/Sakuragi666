@@ -1,17 +1,19 @@
-<p id="notice"><%= notice %></p>
+<div class="clearfix"></div>
+<div class="row">
+  <h1 class="center"><%= @book.name %></h1>
+  <div class="col-md-6 center">
+    <%= link_to image_tag(@book.thumbnail(:medium), class: "book-preview"), pdfjs.full_path(file: @book.document.url) %>
+  </div>
+  <div class="col-md-6 center">
+    <%= @book.tags.each do |tag| %>
+      <%= tag.name %>
+    <% end %>
+  </div>
+</div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @book.name %>
-</p>
-<%= @book.tags %>
 <!-- <% @reader.pages.each do |page| %>
     <%= page.text %>
 <% end %> -->
-
-<%= link_to "display using the full viewer", pdfjs.full_path(file: @book.document.url) %>
-<%= link_to "display using the minimal viewer", pdfjs.minimal_path(file: @book.document.url) %>
-
 
 <%= link_to 'Edit', edit_book_path(@book) %> |
 <%= link_to 'Back', books_path %>

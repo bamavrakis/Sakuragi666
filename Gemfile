@@ -38,6 +38,7 @@ gem 'will_paginate', '~> 3.0.5'
 gem "paperclip", "~> 5.0.0.beta1"
 
 gem 'has_scope'
+gem "binding_of_caller"
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.1.0'
@@ -60,6 +61,7 @@ end
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
+  gem "better_errors"
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
