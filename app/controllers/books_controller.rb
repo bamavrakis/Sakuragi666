@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-  before_action :set_book, only: [:show, :edit, :update, :destroy]
+  before_action :set_book, only: [:show, :edit, :update, :destroy, :add_to_library]
   before_action :authenticate_user!
   has_scope :public_books, :type => :boolean
 
@@ -7,7 +7,7 @@ class BooksController < ApplicationController
   # GET /books.json
   def index
     @books = Book.public_books.paginate(page: params[:books_page], per_page: 9)
-    @my_books = current_user.uploaded_books.paginate(page: params[:my_books_page], per_page: 9)
+    @my_books = current_user.books.paginate(page: params[:my_books_page], per_page: 9)
   end
 
   # GET /books/1
@@ -37,6 +37,7 @@ class BooksController < ApplicationController
 
     respond_to do |format|
       if @book.save
+        current_user.books << @book
         format.html { redirect_to @book, notice: 'Book was successfully created.' }
         format.json { render :show, status: :created, location: @book }
       else
@@ -67,6 +68,14 @@ class BooksController < ApplicationController
     respond_to do |format|
       format.html { redirect_to books_url, notice: 'Book was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def add_to_library
+    current_user.books << @book
+    respond_to do |format|
+      format.html { redirect_to @book, notice: 'Book was successfully added to your library.' }
+      format.json { render :show, status: :ok, location: @book }
     end
   end
 

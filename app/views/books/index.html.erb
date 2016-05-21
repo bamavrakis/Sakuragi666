@@ -6,7 +6,11 @@
         <h3 class="text-center">Public eBooks</h3>
         <% @books.each do |book| %>
         <div class="book col-lg-4 col-md-6 col-xs-6 ">
-            <p class="text-center book-index-name"><%= link_to book.name, book %></p>
+          <p class="text-center book-index-name"><%= link_to book.name, book %>
+            <% if (!current_user.books.include?(book)) %>
+              <%= link_to image_tag("add.png"), add_to_library_path(book) %>
+            <% end %>
+          </p>
             <%= link_to image_tag(book.thumbnail.url(:small), class: "book-thumbnail"), book %>
         </div>
         <% end %>
