@@ -14,19 +14,19 @@ class BooksController < ApplicationController
   # GET /books/1.json
   def show
     @book = Book.find(params[:id])
-    @reader = PDF::Reader.new(open(@book.document.path))
+    #@reader = PDF::Reader.new(open(@book.document.path))
 
     @file = Rails.public_path + @book.document.path
 
-    @client = CloudConvert::Client.new(api_key: "RpZNlEckdEIJWv3GG0z4pX1BdqvJV1Lp1DzzZdvABlsmpXrjR0rqpb36-gNWDcm3nSTwY2tObtb6GoMZnBuX9A")
-    @process = @client.build_process(input_format: :pdf, output_format: :pdf)
-    @process_response = @process.create
-    @conversion_response = @process.convert(
-        input: "upload",
-        outputformat: :pdf,
-        file: @file,
-        download: "false"
-    )
+    #@client = CloudConvert::Client.new(api_key: "RpZNlEckdEIJWv3GG0z4pX1BdqvJV1Lp1DzzZdvABlsmpXrjR0rqpb36-gNWDcm3nSTwY2tObtb6GoMZnBuX9A")
+    #@process = @client.build_process(input_format: :pdf, output_format: :pdf)
+    #@process_response = @process.create
+    #@conversion_response = @process.convert(
+    #    input: "upload",
+    #    outputformat: :pdf,
+    #    file: @file,
+    #    download: "false"
+    #)
 
 
 
