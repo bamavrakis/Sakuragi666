@@ -5,7 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-require 'RMagick'
+require 'rmagick'
 
 file = File.open("app/assets/documents/test.pdf")
 pdf = Magick::ImageList.new("app/assets/documents/test.pdf")
