@@ -5,7 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-require 'RMagick'
+require 'rmagick'
 
 file = File.open("app/assets/documents/test.pdf")
 pdf = Magick::ImageList.new("app/assets/documents/test.pdf")
@@ -30,5 +30,28 @@ Book.create(uploader_id: 1, name: "Test 14", private: true, document: file, thum
 Book.create(uploader_id: 1, name: "Test 15", private: true, document: file, thumbnail: File.new("app/assets/documents/test.png"))
 Book.create(uploader_id: 1, name: "Test 16", private: true, document: file, thumbnail: File.new("app/assets/documents/test.png"))
 Book.create(uploader_id: 1, name: "Test 17", private: true, document: file, thumbnail: File.new("app/assets/documents/test.png"))
+
+Tag.create(name:"Science Fiction")
+Tag.create(name:"Fantasy")
+Tag.create(name:"Satire")
+Tag.create(name:"Drama")
+Tag.create(name:"Action & Adventure")
+Tag.create(name:"Romance")
+Tag.create(name:"Mystery")
+Tag.create(name:"Horror")
+Tag.create(name:"Self Help")
+Tag.create(name:"Health")
+Tag.create(name:"Guide & Travel")
+Tag.create(name:"Children")
+Tag.create(name:"Religion")
+Tag.create(name:"Math & Science")
+Tag.create(name:"History")
+Tag.create(name:"Poetry & Art")
+Tag.create(name:"Encyclopedias")
+Tag.create(name:"Dictionaries")
+Tag.create(name:"Comics")
+Tag.create(name:"Cookbooks")
+Tag.create(name:"Diaries & Journals")
+Tag.create(name:"Biographies")
 
 file.close

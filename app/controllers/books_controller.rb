@@ -20,10 +20,12 @@ class BooksController < ApplicationController
   # GET /books/new
   def new
     @book = Book.new
+    @tags = Tag.all
   end
 
   # GET /books/1/edit
   def edit
+    @tags = Tag.all
   end
 
   # POST /books
@@ -31,6 +33,11 @@ class BooksController < ApplicationController
   def create
     @book = Book.new(book_params)
     @book.uploader = current_user
+    @tags = Tag.find(params[:tags])
+    @book.tags = @tags
+    #params[:tags].each do |tag|
+    #  @book.tags << Tag.find_by_name(tag)
+    #end
     respond_to do |format|
       if @book.save
         format.html { redirect_to @book, notice: 'Book was successfully created.' }
@@ -47,6 +54,8 @@ class BooksController < ApplicationController
   def update
     respond_to do |format|
       if @book.update(book_params)
+        @tags = Tag.find(params[:tags])
+        @book.tags = @tags
         format.html { redirect_to @book, notice: 'Book was successfully updated.' }
         format.json { render :show, status: :ok, location: @book }
       else
@@ -83,7 +92,6 @@ class BooksController < ApplicationController
     end
 
     def search_params
-        params.require(:book).permit(:name)
+      params.require(:book).permit(:name)
     end
-
 end

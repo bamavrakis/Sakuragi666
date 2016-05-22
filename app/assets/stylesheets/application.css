@@ -244,6 +244,13 @@ p, ol, ul, td {
   margin: 0 auto;
 }
 
+.tag-grid-ul li {
+    display: block;
+    float: left;
+    width: 50%;
+    font-size: 55%;
+}
+
 #nav-icon1{
   width: 60px;
   height: 45px;
