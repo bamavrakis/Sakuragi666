@@ -75,9 +75,23 @@ class BooksController < ApplicationController
     end
   end
 
+  # Initial form for searching (we add this so we can make the tag grid).
+  def search_form
+    @tags = Tag.all
+  end
+
   # Books searching (for now, only by book title).
   def search
-    @searched_books = Book.public_books.where("name like ?", '%' + search_params[:name] + '%')
+    @searched_books = Book.public_books
+    if search_params[:name].blank? == false
+      @searched_books = @searched_books.where("name like ?", '%' + search_params[:name] + '%')
+    end
+    if params[:tags]
+      @tags = Tag.find(params[:tags])
+      @tags.each do |t|
+        @searched_books = @searched_books.select { |book| book.tags.include? t}
+      end
+    end
   end
 
   private

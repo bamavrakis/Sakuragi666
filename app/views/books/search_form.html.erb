@@ -1,0 +1,31 @@
+<div id="search-form" class="form">
+
+<%= form_for(Book.new, url: search_path) do |f| %>
+<div class="name-book">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+</div>
+
+<div class="tag-title">
+  <h2> Search your book by tags: </h2>
+</div>
+<div class="tag-grid">
+  <ul class="tag-grid-ul">
+      <% @tags.each do |t| %>
+        <li>
+          <div class="form-group">
+            <%= f.label t.name  %>
+            <%= check_box_tag "tags[]", t.id %>
+          </div>
+        </li>
+      <% end %>
+  </ul>
+</div>
+
+<div class="actions">
+    <%= f.submit "Search", id: 'search_books_button' %>
+</div>
+<% end %>
+</div>
+
+<%= link_to 'Back', books_path %>

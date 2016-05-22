@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   # HACER BIEN LAS RUTAS LIBROS-USUARIO, MEJOR HACERLO MANUAL!
   resources :tags
   resources :books
+  get 'search_form' => 'books#search_form'
   post 'search' => 'books#search'
   get 'welcome/index'
   # You can have the root of your site routed with "root"

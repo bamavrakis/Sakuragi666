@@ -1,17 +1,7 @@
 <div class="clearfix"></div>
 
-<div id="search-form" class="form">
-<%= form_for(Book.new, url: search_path) do |f| %>
-<div class="name-book">
-    <%= f.text_field :name, :placeholder => "Nombre del libro" %>
-</div>
-<!-- <div class="tags-book">
-TO DO - Add tag searching.
-</div> -->
-<div class="actions">
-    <%= f.submit "Buscar", id: 'search_books_button' %>
-</div>
-<% end %>
+<div class="search-form">
+<%= link_to "Search Books", search_form_path, class: 'button' %>
 </div>
 
 <div class="row">
