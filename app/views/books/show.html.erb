@@ -19,8 +19,9 @@
   <% if(!current_user.books.include?(@book)) %>
     <%= link_to 'Add to my library', add_to_library_path(@book) %>
   <% end %>
-
-  <%= link_to 'Convert to epub', convert_path(@book) %>
+  <% @supported_files.each do |s| %>
+    <%= link_to ('Convert to ' + s), convert_path(@book, s) %>  
+  <% end %>
   <%= link_to 'Back', books_path %>
 </div>
 

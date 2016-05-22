@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160518162317) do
+ActiveRecord::Schema.define(version: 20160522201102) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,17 @@ ActiveRecord::Schema.define(version: 20160518162317) do
 
   add_index "books_users", ["book_id"], name: "index_books_users_on_book_id", using: :btree
   add_index "books_users", ["user_id"], name: "index_books_users_on_user_id", using: :btree
+
+  create_table "convertions", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "convertion_url"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.string   "name"
+    t.string   "download_link"
+  end
+
+  add_index "convertions", ["user_id"], name: "index_convertions_on_user_id", using: :btree
 
   create_table "tags", force: :cascade do |t|
     t.string   "name"

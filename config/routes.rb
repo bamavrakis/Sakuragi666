@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   get 'books/:id/add_to_library' => 'books#add_to_library', as: :add_to_library
-  get 'books/:id/convert' => 'books#convert', as: :convert
+  get 'convertions/:id/download' => 'convertions#download_convertion', as: :download_convertion
+  get 'convertions' => 'convertions#index', as: :convertions
+  get 'books/:id/convert/:output_format' => 'books#convert', as: :convert
 
   devise_for :users, controllers: { registrations: "registrations" }
   mount PdfjsViewer::Rails::Engine => "/pdfjs", as: 'pdfjs'

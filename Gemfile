@@ -35,6 +35,10 @@ gem 'cancan'
 gem 'will_paginate', '~> 3.0.5'
 gem "pg"
 
+gem 'httparty'
+gem 'mimemagic'
+gem 'multipart-post'
+gem 'httmultiparty'
 gem "paperclip", "~> 5.0.0.beta1"
 
 gem 'has_scope'
