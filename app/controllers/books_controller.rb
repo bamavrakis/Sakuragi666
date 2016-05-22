@@ -33,11 +33,18 @@ class BooksController < ApplicationController
   def create
     @book = Book.new(book_params)
     @book.uploader = current_user
+<<<<<<< HEAD
     @tags = Tag.find(params[:tags])
     @book.tags = @tags
     #params[:tags].each do |tag|
     #  @book.tags << Tag.find_by_name(tag)
     #end
+=======
+    pdf = Magick::ImageList.new(@book.document.path)
+    thumb = pdf.scale(340, 440)
+    @book.thumbnail = File.new(thumb)
+
+>>>>>>> master
     respond_to do |format|
       if @book.save
         format.html { redirect_to @book, notice: 'Book was successfully created.' }
