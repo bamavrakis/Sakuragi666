@@ -1,10 +1,12 @@
-<h1>El resultado de tu búsqueda:</h1>
-<% @searched_books.each do |book| %>
-  <p>
-    <strong>Name:</strong>
-    <%= book.name %>
-  </p>
-<% end %>
+<div class="col-xs-6">
+  <h1 class="text-center">Search results:</h1>
+    <% @searched_books.each do |book| %>
+    <div class="book col-lg-4 col-md-6 col-xs-6 ">
+        <p class="text-center book-index-name"><%= link_to book.name, book %></p>
+        <%= link_to image_tag(book.thumbnail.url(:small), class: "book-thumbnail"), book %>
+    </div>
+    <% end %>
+</div>
 
 <%= link_to 'Back to search', search_form_path %>
 <%= link_to 'Back', books_path %>
