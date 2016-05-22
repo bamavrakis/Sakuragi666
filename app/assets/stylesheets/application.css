@@ -247,7 +247,7 @@ p, ol, ul, td {
 .tag-grid-ul li {
     display: block;
     float: left;
-    width: 50%;
+    width: 33%;
     font-size: 55%;
 }
 

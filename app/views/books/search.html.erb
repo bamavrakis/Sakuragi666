@@ -8,5 +8,11 @@
     <% end %>
 </div>
 
+<div class="col-xs-6">
+    <div class="will_paginate">
+        <%= will_paginate @searched_books, :param_name => 'books_page' %>
+    </div>
+</div>
+
 <%= link_to 'Back to search', search_form_path %>
 <%= link_to 'Back', books_path %>
