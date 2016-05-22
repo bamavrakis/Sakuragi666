@@ -83,6 +83,7 @@ class BooksController < ApplicationController
 
   def convert
     conversion = Cloudconvert::Conversion.new
+    #conversion.convert(input: 'upload', outputformat: 'pdf', file: @book.document.path, download: true, wait: true)
     conversion.convert('pdf', 'epub', @book.document.path, book_path(@book))
     redirect_to conversion.download_link
   end
