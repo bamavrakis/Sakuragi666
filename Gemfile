@@ -39,6 +39,7 @@ gem "paperclip", "~> 5.0.0.beta1"
 
 gem 'has_scope'
 gem "binding_of_caller"
+gem 'cloudconvert'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.1.0'

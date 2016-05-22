@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-  before_action :set_book, only: [:show, :edit, :update, :destroy, :add_to_library]
+  before_action :set_book, only: [:show, :edit, :update, :destroy, :add_to_library, :convert]
   before_action :authenticate_user!
   has_scope :public_books, :type => :boolean
 
@@ -15,6 +15,8 @@ class BooksController < ApplicationController
   def show
     @book = Book.find(params[:id])
     @reader = PDF::Reader.new(open(@book.document.path))
+    @path = @book.document.path
+    @extended_path = File.expand_path(@book.document.path)
   end
 
   # GET /books/new
@@ -77,6 +79,12 @@ class BooksController < ApplicationController
       format.html { redirect_to @book, notice: 'Book was successfully added to your library.' }
       format.json { render :show, status: :ok, location: @book }
     end
+  end
+
+  def convert
+    conversion = Cloudconvert::Conversion.new
+    conversion.convert('pdf', 'epub', @book.document.path, book_path(@book))
+    redirect_to conversion.download_link
   end
 
   private
