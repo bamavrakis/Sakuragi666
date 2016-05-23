@@ -14,7 +14,17 @@ class BooksController < ApplicationController
   # GET /books/1.json
   def show
     @book = Book.find(params[:id])
-    @reader = PDF::Reader.new(open(@book.document.path))
+    #@reader = PDF::Reader.new(open(@book.document.path))
+    @formato = File.extname(@book.document.path).gsub('.','')
+    if @formato == "mobi"
+      Mobi::Metadata.new(File.open(File.expand_path(@book.document.path)))
+
+    elsif @formato == "pdf"
+      
+      @reader = PDF::Reader.new(open(@book.document.path))
+      
+    end
+    
   end
 
   # GET /books/new
