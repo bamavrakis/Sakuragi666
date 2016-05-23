@@ -251,6 +251,16 @@ p, ol, ul, td {
     font-size: 55%;
 }
 
+.field_with_errors {
+  display: inline;
+}
+
+.field_with_errors .message {
+  color: #D80;
+  padding-left: 5px;
+  font-size: 12px;
+}
+
 #nav-icon1{
   width: 60px;
   height: 45px;

@@ -45,6 +45,8 @@ gem 'has_scope'
 gem "binding_of_caller"
 gem 'cloudconvert'
 
+gem 'client_side_validations'
+
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.1.0'
 end

@@ -12,30 +12,29 @@ pdf = Magick::ImageList.new("app/assets/documents/test.pdf")
 thumb = pdf.scale(340, 440)
 thumb.write "app/assets/documents/test.png"
 User.create(email: "oscar@oscar.cl", name: "Oscar", last_name: "Estay", kind: "user", password: "password", password_confirmation: "password", avatar: File.new("app/assets/images/bad_joke.png"))
-@user = User.first
+User.create(email: "germy@germy.cl", name: "German", last_name: "Contreras", kind: "user", password: "123456", password_confirmation: "123456", avatar: File.new("app/assets/images/bad_joke.png"))
+User.create(email: "bastian@bastian.cl", name: "Bastian", last_name: "Mavrakis", kind: "user", password: "lalala", password_confirmation: "lalala", avatar: File.new("app/assets/images/bad_joke.png"))
+@user1 = User.find(1)
+@user2 = User.find(2)
+@user3 = User.find(3)
 Book.create(uploader_id: 1, name: "Test 0", private: true, document: file, thumbnail: File.new("app/assets/documents/test.png"))
-Book.create(uploader_id: 1, name: "Test 1", private: true, document: file, thumbnail: File.new("app/assets/documents/test.png"))
+Book.create(uploader_id: 1, name: "Test 1", private: false, document: file, thumbnail: File.new("app/assets/documents/test.png"))
 Book.create(uploader_id: 1, name: "Test 2", private: true, document: file, thumbnail: File.new("app/assets/documents/test.png"))
-Book.create(uploader_id: 1, name: "Test 3", private: true, document: file, thumbnail: File.new("app/assets/documents/test.png"))
+Book.create(uploader_id: 1, name: "Test 3", private: false, document: file, thumbnail: File.new("app/assets/documents/test.png"))
 Book.create(uploader_id: 1, name: "Test 4", private: true, document: file, thumbnail: File.new("app/assets/documents/test.png"))
-Book.create(uploader_id: 1, name: "Test 5", private: true, document: file, thumbnail: File.new("app/assets/documents/test.png"))
-Book.create(uploader_id: 1, name: "Test 6", private: false, document: file, thumbnail: File.new("app/assets/documents/test.png"))
-Book.create(uploader_id: 1, name: "Test 7", private: false, document: file, thumbnail: File.new("app/assets/documents/test.png"))
-Book.create(uploader_id: 1, name: "Test 8", private: false, document: file, thumbnail: File.new("app/assets/documents/test.png"))
-Book.create(uploader_id: 1, name: "Test 9", private: false, document: file, thumbnail: File.new("app/assets/documents/test.png"))
-Book.create(uploader_id: 1, name: "Test 10", private: false, document: file, thumbnail: File.new("app/assets/documents/test.png"))
-Book.create(uploader_id: 1, name: "Test 11", private: false, document: file, thumbnail: File.new("app/assets/documents/test.png"))
-Book.create(uploader_id: 1, name: "Test 12", private: false, document: file, thumbnail: File.new("app/assets/documents/test.png"))
-Book.create(uploader_id: 1, name: "Test 13", private: true, document: file, thumbnail: File.new("app/assets/documents/test.png"))
-Book.create(uploader_id: 1, name: "Test 14", private: true, document: file, thumbnail: File.new("app/assets/documents/test.png"))
-Book.create(uploader_id: 1, name: "Test 15", private: true, document: file, thumbnail: File.new("app/assets/documents/test.png"))
-Book.create(uploader_id: 1, name: "Test 16", private: true, document: file, thumbnail: File.new("app/assets/documents/test.png"))
-Book.create(uploader_id: 1, name: "Test 17", private: true, document: file, thumbnail: File.new("app/assets/documents/test.png"))
-
-@books = Book.all
-@books.each do |book|
-  @user.books << book
-end
+Book.create(uploader_id: 1, name: "Test 5", private: false, document: file, thumbnail: File.new("app/assets/documents/test.png"))
+Book.create(uploader_id: 2, name: "Test 6", private: true, document: file, thumbnail: File.new("app/assets/documents/test.png"))
+Book.create(uploader_id: 2, name: "Test 7", private: false, document: file, thumbnail: File.new("app/assets/documents/test.png"))
+Book.create(uploader_id: 2, name: "Test 8", private: true, document: file, thumbnail: File.new("app/assets/documents/test.png"))
+Book.create(uploader_id: 2, name: "Test 9", private: false, document: file, thumbnail: File.new("app/assets/documents/test.png"))
+Book.create(uploader_id: 2, name: "Test 10", private: true, document: file, thumbnail: File.new("app/assets/documents/test.png"))
+Book.create(uploader_id: 2, name: "Test 11", private: false, document: file, thumbnail: File.new("app/assets/documents/test.png"))
+Book.create(uploader_id: 3, name: "Test 12", private: true, document: file, thumbnail: File.new("app/assets/documents/test.png"))
+Book.create(uploader_id: 3, name: "Test 13", private: false, document: file, thumbnail: File.new("app/assets/documents/test.png"))
+Book.create(uploader_id: 3, name: "Test 14", private: true, document: file, thumbnail: File.new("app/assets/documents/test.png"))
+Book.create(uploader_id: 3, name: "Test 15", private: false, document: file, thumbnail: File.new("app/assets/documents/test.png"))
+Book.create(uploader_id: 3, name: "Test 16", private: true, document: file, thumbnail: File.new("app/assets/documents/test.png"))
+Book.create(uploader_id: 3, name: "Test 17", private: false, document: file, thumbnail: File.new("app/assets/documents/test.png"))
 
 Tag.create(name:"Science Fiction")
 Tag.create(name:"Fantasy")
@@ -59,4 +58,34 @@ Tag.create(name:"Cookbooks")
 Tag.create(name:"Diaries & Journals")
 Tag.create(name:"Biographies")
 
+# Add three random tags per book
+@books = Book.all
+@tags = Tag.all
+
+@books1 = @books.where('uploader_id = 1')
+@books1.each do |book|
+  @user1.books << book
+end
+
+@books2 = @books.where('uploader_id = 2')
+@books2.each do |book|
+  @user2.books << book
+end
+
+@books3 = @books.where('uploader_id = 3')
+@books3.each do |book|
+  @user3.books << book
+end
+
+@user1.books.each do |book|
+  book.tags = @tags.sample(3)
+end
+
+@user2.books.each do |book|
+  book.tags = @tags.sample(3)
+end
+
+@user3.books.each do |book|
+  book.tags = @tags.sample(3)
+end
 file.close

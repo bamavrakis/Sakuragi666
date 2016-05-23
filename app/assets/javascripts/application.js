@@ -16,3 +16,4 @@
 //= require turbolinks
 //= require bootstrap.min
 //= require_tree .
+//= require rails.validations
