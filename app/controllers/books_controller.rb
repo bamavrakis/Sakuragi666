@@ -1,3 +1,5 @@
+require 'will_paginate/array'
+
 class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update, :destroy, :add_to_library, :convert]
   before_action :set_output_format, only: [:convert]
