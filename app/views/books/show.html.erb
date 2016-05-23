@@ -3,8 +3,8 @@
   <h1 class="center"><%= @book.name %></h1>
   <div class="col-md-6 center">
     <%= link_to image_tag(@book.thumbnail(:medium), class: "book-preview"), pdfjs.full_path(file: @book.document.url) %>
-    <%= @path %>
     <%= @extended_path %>
+    <%= @path %>
   </div>
   <div class="col-md-6 center">
     <h3>Book Tags </h3>
