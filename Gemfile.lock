@@ -121,6 +121,7 @@ GEM
     mimemagic (0.3.1)
     mini_portile2 (2.0.0)
     minitest (5.8.4)
+    mobi (1.0.0)
     multi_json (1.11.3)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
@@ -236,8 +237,12 @@ DEPENDENCIES
   httparty
   jbuilder (~> 2.0)
   jquery-rails
+<<<<<<< HEAD
   mimemagic
   multipart-post
+=======
+  mobi
+>>>>>>> reader
   paperclip (~> 5.0.0.beta1)
   pdf-reader
   pdfjs_viewer-rails
@@ -252,3 +257,6 @@ DEPENDENCIES
   uglifier (>= 1.3.0)
   web-console (~> 2.0)
   will_paginate (~> 3.0.5)
+
+BUNDLED WITH
+   1.12.4
