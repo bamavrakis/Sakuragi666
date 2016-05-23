@@ -17,11 +17,20 @@ class BooksController < ApplicationController
   # GET /books/1.json
   def show
     @book = Book.find(params[:id])
-    @reader = PDF::Reader.new(open(@book.document.path))
-    @extended_path = File.expand_path(@book.document.path)
-
-    @supported_files = ['epub', 'mobi', 'azw3', 'pdf']
+    #@reader = PDF::Reader.new(open(@book.document.path))
+    @formato = File.extname(@book.document.path).gsub('.','')
+     @supported_files = ['epub', 'mobi', 'azw3', 'pdf']
     @supported_files.delete(File.extname(@book.document.path).gsub('.',''))
+    if @formato == "mobi"
+      Mobi::Metadata.new(File.open(File.expand_path(@book.document.path)))
+
+    elsif @formato == "pdf"
+      
+      @reader = PDF::Reader.new(open(@book.document.path))
+      
+    end
+    
+>>>>>>> reader
   end
 
   # GET /books/new
@@ -40,9 +49,13 @@ class BooksController < ApplicationController
   def create
     @book = Book.new(book_params)
     @book.uploader = current_user
-    pdf = Magick::ImageList.new(@book.document.path)
-    thumb = pdf.scale(340, 440)
-    @book.thumbnail = File.new(thumb)
+    @formato = File.extname(@book.document.path).gsub('.','')
+    if @formato == "pdf"
+      pdf = Magick::ImageList.new(@book.document.path)
+      thumb = pdf.scale(340, 440)
+
+      @book.thumbnail = File.new(thumb)
+    end
     @tags = Tag.find(params[:tags])
     @book.tags = @tags
     respond_to do |format|
