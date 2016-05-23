@@ -3,17 +3,29 @@
   <h1 class="center"><%= @book.name %></h1>
   <div class="col-md-6 center">
     <%= link_to image_tag(@book.thumbnail(:medium), class: "book-preview"), pdfjs.full_path(file: @book.document.url) %>
+    <%= @path %>
+    <%= @extended_path %>
   </div>
   <div class="col-md-6 center">
-    <%= @book.tags.each do |tag| %>
-      <%= tag.name %>
+    <h3>Book Tags </h3>
+    <% @book.tags.each do |tag| %>
+      <%= tag.name %><br/>
     <% end %>
   </div>
+  <div class="clearfix"></div>
+  <% if(@book.uploader == current_user) %>
+    <%= link_to 'Edit', edit_book_path(@book) %>
+    <%= link_to 'Delete', @book, method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% end %>
+  <% if(!current_user.books.include?(@book)) %>
+    <%= link_to 'Add to my library', add_to_library_path(@book) %>
+  <% end %>
+  <% @supported_files.each do |s| %>
+    <%= link_to ('Convert to ' + s), convert_path(@book, s) %>
+  <% end %>
+  <%= link_to 'Back', books_path %>
 </div>
 
 <!-- <% @reader.pages.each do |page| %>
     <%= page.text %>
 <% end %> -->
-
-<%= link_to 'Edit', edit_book_path(@book) %> |
-<%= link_to 'Back', books_path %>

@@ -8,6 +8,12 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'welcome#index'
 
+
+  get 'books/:id/add_to_library' => 'books#add_to_library', as: :add_to_library
+  get 'convertions/:id/download' => 'convertions#download_convertion', as: :download_convertion
+  get 'convertions' => 'convertions#index', as: :convertions
+  get 'books/:id/convert/:output_format' => 'books#convert', as: :convert
+
   devise_for :users, controllers: { registrations: "registrations" }
   mount PdfjsViewer::Rails::Engine => "/pdfjs", as: 'pdfjs'
   # The priority is based upon order of creation: first created -> highest priority.

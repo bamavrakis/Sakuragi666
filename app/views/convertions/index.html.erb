@@ -1,0 +1,8 @@
+<div class="row">
+  <% @ready.each do |c| %>
+  <%= link_to c.name, download_convertion_path(c) %>
+  <% end %>
+  <% @wait.each do |c| %>
+  <%= c.name %>
+  <% end %>
+</div>

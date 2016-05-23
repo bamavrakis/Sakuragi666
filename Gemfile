@@ -3,8 +3,7 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5.1'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+# Use postgres as the database for Active Record
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 gem 'autoprefixer-rails'
@@ -34,11 +33,17 @@ gem 'devise'
 gem 'cancan'
 
 gem 'will_paginate', '~> 3.0.5'
+gem "pg"
 
+gem 'httparty'
+gem 'mimemagic'
+gem 'multipart-post'
+gem 'httmultiparty'
 gem "paperclip", "~> 5.0.0.beta1"
 
 gem 'has_scope'
 gem "binding_of_caller"
+gem 'cloudconvert'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.1.0'
@@ -52,6 +57,7 @@ end
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
