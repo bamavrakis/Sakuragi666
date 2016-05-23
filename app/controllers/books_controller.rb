@@ -43,9 +43,13 @@ class BooksController < ApplicationController
   def create
     @book = Book.new(book_params)
     @book.uploader = current_user
-    pdf = Magick::ImageList.new(@book.document.path)
-    thumb = pdf.scale(340, 440)
-    @book.thumbnail = File.new(thumb)
+    @formato = File.extname(@book.document.path).gsub('.','')
+    if @formato == "pdf"
+      pdf = Magick::ImageList.new(@book.document.path)
+      thumb = pdf.scale(340, 440)
+
+      @book.thumbnail = File.new(thumb)
+    end
     @tags = Tag.find(params[:tags])
     @book.tags = @tags
     respond_to do |format|
