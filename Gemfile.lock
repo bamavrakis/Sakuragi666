@@ -237,12 +237,9 @@ DEPENDENCIES
   httparty
   jbuilder (~> 2.0)
   jquery-rails
-<<<<<<< HEAD
   mimemagic
-  multipart-post
-=======
   mobi
->>>>>>> reader
+  multipart-post
   paperclip (~> 5.0.0.beta1)
   pdf-reader
   pdfjs_viewer-rails
