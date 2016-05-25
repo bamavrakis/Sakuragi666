@@ -2,9 +2,13 @@
 <div class="row">
   <h1 class="center"><%= @book.name %></h1>
   <div class="col-md-6 center">
-    <%= link_to image_tag(@book.thumbnail(:medium), class: "book-preview"), pdfjs.full_path(file: @book.document.url) %>
-    <%= @extended_path %>
-    <%= @path %>
+    <% if @formato == "pdf"%>
+      <%= link_to image_tag(@book.thumbnail(:medium), class: "book-preview"), pdfjs.full_path(file: @book.document.url) %>
+      <%= @extended_path %>
+      <%= @path %>
+    <% elsif @formato == "epub"%>
+      <%= link_to 'Read Book', read_epub_path(@book) %>
+    <% end%>
   </div>
   <div class="col-md-6 center">
     <h3>Book Tags </h3>
@@ -26,6 +30,4 @@
   <%= link_to 'Back', books_path %>
 </div>
 
-<!-- <% @reader.pages.each do |page| %>
-    <%= page.text %>
-<% end %> -->
+

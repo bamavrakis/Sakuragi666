@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get 'convertions/:id/download' => 'convertions#download_convertion', as: :download_convertion
   get 'convertions' => 'convertions#index', as: :convertions
   get 'books/:id/convert/:output_format' => 'books#convert', as: :convert
+  get 'books/:id/readepub' => 'books#readepub', as: :read_epub
 
   devise_for :users, controllers: { registrations: "registrations" }
   mount PdfjsViewer::Rails::Engine => "/pdfjs", as: 'pdfjs'
