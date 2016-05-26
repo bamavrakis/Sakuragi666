@@ -25,12 +25,11 @@ class BooksController < ApplicationController
       Mobi::Metadata.new(File.open(File.expand_path(@book.document.path)))
 
     elsif @formato == "pdf"
-      
+
       @reader = PDF::Reader.new(open(@book.document.path))
-      
+
     end
-    
->>>>>>> reader
+
   end
 
   # GET /books/new
@@ -53,11 +52,14 @@ class BooksController < ApplicationController
     if @formato == "pdf"
       pdf = Magick::ImageList.new(@book.document.path)
       thumb = pdf.scale(340, 440)
-
       @book.thumbnail = File.new(thumb)
     end
-    @tags = Tag.find(params[:tags])
-    @book.tags = @tags
+    if params[:tags]
+      @tags = Tag.find(params[:tags])
+      @book.tags = @tags
+    else
+      @book.tags = []
+    end
     respond_to do |format|
       if @book.save
         current_user.books << @book
