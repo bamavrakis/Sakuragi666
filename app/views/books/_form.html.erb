@@ -13,15 +13,15 @@
 
   <div class="form-group">
     <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, id: "book-name-form" %>
   </div>
   <div class="form-group">
     <%= f.label :private %><br>
-    <%= f.check_box :private %>
+    <%= f.check_box :private, id: "book-private-form" %>
   </div>
   <div class="form-group">
     <%= f.label :document %><br>
-    <%= f.file_field :document%>
+    <%= f.file_field :document, id: "book-document-form"%>
   </div>
 
   <div class="tag-title">
