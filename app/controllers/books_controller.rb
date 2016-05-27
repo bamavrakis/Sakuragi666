@@ -5,6 +5,7 @@ class BooksController < ApplicationController
   before_action :set_output_format, only: [:convert]
   before_action :authenticate_user!
   has_scope :public_books, :type => :boolean
+  layout false, only: [:readepub]
 
   # GET /books
   # GET /books.json
@@ -29,13 +30,16 @@ class BooksController < ApplicationController
       @reader = PDF::Reader.new(open(@book.document.path))
 
     end
-
   end
 
   # GET /books/new
   def new
     @book = Book.new
     @tags = Tag.all
+  end
+
+  def readepub
+    @book = Book.find(params[:id])
   end
 
   # GET /books/1/edit
