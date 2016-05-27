@@ -3,7 +3,7 @@ Warden.test_mode!
 
 describe "uploading book process", :type => :feature do
 
-  let(:user) {FactoryGirl.create(:user)}
+  let(:user) {User.find_by_email("germy@germy.cl")}
   before { login_as(user, scope: :user) }
 
   it "can upload a book" do
@@ -12,7 +12,7 @@ describe "uploading book process", :type => :feature do
     check "book-private-form"
     attach_file "book-document-form", "app/assets/documents/test.pdf"
     click_button "New Book"
-    expect(page).to have_content "Success"
+    expect(page).to have_content "Book was successfully created"
   end
 
 end

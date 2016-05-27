@@ -1,5 +1,6 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <title><%= content_for?(:title) ? yield(:title) : "App_Name" %></title>
   <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "App_Name" %>">
   <%= stylesheet_link_tag "application", :media => "all" %>
@@ -24,7 +25,7 @@
   
                 // fileStorage.filePath = EPUBJS.filePath;
 
-                window.reader = ePubReader("moby-dick/");
+                window.reader = ePubReader("/moby-dick/");
               }
             };
 
