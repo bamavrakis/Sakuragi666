@@ -48,12 +48,6 @@ class BooksController < ApplicationController
   def create
     @book = Book.new(book_params)
     @book.uploader = current_user
-    @formato = File.extname(@book.document.path).gsub('.','')
-    if @formato == "pdf"
-      pdf = Magick::ImageList.new(@book.document.path)
-      thumb = pdf.scale(340, 440)
-      @book.thumbnail = File.new(thumb)
-    end
     if params[:tags]
       @tags = Tag.find(params[:tags])
       @book.tags = @tags
@@ -62,6 +56,15 @@ class BooksController < ApplicationController
     end
     respond_to do |format|
       if @book.save
+        @formato = File.extname(@book.document.path).gsub('.','')
+        if @formato == "pdf"
+          pdf = Magick::ImageList.new(@book.document.path)
+          thumb = pdf.scale(340, 440)
+          file = Tempfile.new(['processed','.png'])
+          thumb.write(file.path)
+          @book.thumbnail = file
+          @book.save
+        end
         current_user.books << @book
         format.html { redirect_to @book, notice: 'Book was successfully created.' }
         format.json { render :show, status: :created, location: @book }
