@@ -15,7 +15,7 @@ Asegúrense de llenar lo siguiente:
 |:-------------|:--------------------|:------------------|:----------------|
 | 13636286     | Germán Contreras    | glcontreras@uc.cl | @Geeermy        |
 | 13633082     | Óscar Estay         | oaestay@uc.cl     | @oaestay        |
-| 12345678     | Bastián Mavrakis    | bamavrakis@uc.cl  | @bamavrakis     |
+| 13634623     | Bastián Mavrakis    | bamavrakis@uc.cl  | @bamavrakis     |
 
 ## Instrucciones
 
