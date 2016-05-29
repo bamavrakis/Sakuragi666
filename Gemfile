@@ -44,7 +44,8 @@ gem "paperclip", "~> 5.0.0.beta1"
 
 gem 'has_scope'
 gem "binding_of_caller"
-gem 'cloudconvert'
+# gem 'cloudconvert'
+gem 'rails_12factor'
 
 gem 'client_side_validations'
 
