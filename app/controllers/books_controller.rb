@@ -1,54 +1,40 @@
 require 'will_paginate/array'
 
 class BooksController < ApplicationController
-  before_action :set_book, only: [:show, :edit, :update, :destroy, :add_to_library, :convert]
+  before_action :set_book, only: [:show, :edit, :update, :destroy, :add_to_library, :convert, :readepub]
   before_action :set_output_format, only: [:convert]
   before_action :authenticate_user!
   has_scope :public_books, :type => :boolean
   layout false, only: [:readepub]
 
-  # GET /books
-  # GET /books.json
   def index
     @books = Book.public_books.paginate(page: params[:books_page], per_page: 9)
     @my_books = current_user.books.paginate(page: params[:my_books_page], per_page: 9)
   end
 
-  # GET /books/1
-  # GET /books/1.json
   def show
-    @book = Book.find(params[:id])
-    #@reader = PDF::Reader.new(open(@book.document.path))
     @formato = File.extname(@book.document.path).gsub('.','')
-     @supported_files = ['epub', 'mobi', 'azw3', 'pdf']
+    @supported_files = ['epub', 'mobi', 'azw3', 'pdf']
     @supported_files.delete(File.extname(@book.document.path).gsub('.',''))
     if @formato == "mobi"
       Mobi::Metadata.new(File.open(File.expand_path(@book.document.path)))
-
     elsif @formato == "pdf"
-
       @reader = PDF::Reader.new(open(@book.document.path))
-
     end
   end
 
-  # GET /books/new
   def new
     @book = Book.new
     @tags = Tag.all
   end
 
   def readepub
-    @book = Book.find(params[:id])
   end
 
-  # GET /books/1/edit
   def edit
     @tags = Tag.all
   end
 
-  # POST /books
-  # POST /books.json
   def create
     @book = Book.new(book_params)
     @book.uploader = current_user
@@ -79,8 +65,6 @@ class BooksController < ApplicationController
     end
   end
 
-  # PATCH/PUT /books/1
-  # PATCH/PUT /books/1.json
   def update
     respond_to do |format|
       if @book.update(book_params)
@@ -95,8 +79,6 @@ class BooksController < ApplicationController
     end
   end
 
-  # DELETE /books/1
-  # DELETE /books/1.json
   def destroy
     @book.destroy
     respond_to do |format|
@@ -113,6 +95,33 @@ class BooksController < ApplicationController
     end
   end
 
+  # def convert
+  #   @current_format = File.extname(@book.document.path).gsub('.','')
+  #   @response = HTTParty.post('https://api.cloudconvert.com/process',
+  #   body: {
+  #     apikey: "mcgo6n6wlB_vfGnPwjiuxkytOtV3PIs3A1MmC-DJescayEgxqKYHu4_HWAfsCqmKssG4hdOO8K4AZnSM51oz8A",
+  #     inputformat: @current_format,
+  #     outputformat: @output_format}.to_json,
+  #   :headers => {
+  #       'Content-Type' => 'application/json',
+  #       'Accept' => 'application/json'
+  #   })
+  #   @upload = HTTParty.post(@response['url'],
+  #   body: {
+  #   input: "upload",
+  #   outputformat: @output_format,
+  #   save: true}.to_json,
+  #   :headers => {
+  #       'Content-Type' => 'application/json',
+  #       'Accept' => 'application/json'
+  #   })
+  #   HTTMultiParty.put(@upload['upload']['url'] + '/' + File.basename(@book.document.path), :query => {
+  #     'file' =>  File.new(@book.document.path)})
+  #   @conversion = Convertion.new(user_id: current_user.id, convertion_url: @response['url'], name: @book.name)
+  #   @conversion.save
+  #   redirect_to @book, notice: 'Book added to your conversions'
+  # end
+
   def convert
     @current_format = File.extname(@book.document.path).gsub('.','')
     @response = HTTParty.post('https://api.cloudconvert.com/process',
@@ -126,15 +135,14 @@ class BooksController < ApplicationController
     })
     @upload = HTTParty.post(@response['url'],
     body: {
-    input: "upload",
+    input: "download",
+    file: @book.document.path,
     outputformat: @output_format,
     save: true}.to_json,
     :headers => {
         'Content-Type' => 'application/json',
         'Accept' => 'application/json'
     })
-    HTTMultiParty.put(@upload['upload']['url'] + '/' + File.basename(@book.document.path), :query => {
-      'file' =>  File.new(@book.document.path)})
     @conversion = Convertion.new(user_id: current_user.id, convertion_url: @response['url'], name: @book.name)
     @conversion.save
     redirect_to @book, notice: 'Book added to your conversions'
