@@ -28,5 +28,13 @@ class Ability
     #
     # See the wiki for details:
     # https://github.com/ryanb/cancan/wiki/Defining-Abilities
+    user ||= User.new
+    if user.admin?
+      can :manage, :all
+    else
+      can :manage, Book, Book.public_books do |book|
+        book.uploader == user
+      end
+    end
   end
 end

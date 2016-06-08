@@ -13,6 +13,7 @@
  *= require_tree .
  *= require_self
  *= require bootstrap.min
+ *= require font-awesome
  */
 
 body {
@@ -28,6 +29,24 @@ p, ol, ul, td {
   font-size: 16px;
   line-height: 18px;
 }
+
+#wrapper h1{
+    margin-top: 0px;
+}
+
+#wrapper a:hover, #wrapper a {
+    text-decoration: none;
+}
+
+#wrapper a{
+    color: #6d6d6d;
+}
+
+#wrapper a:hover{
+    color: #000;
+}
+
+/* Sidebar and Wrapper CSS */
 
 #wrapper {
     padding-left: 0;
@@ -87,7 +106,7 @@ p, ol, ul, td {
     line-height: 40px;
 }
 
-.sidebar-nav li a {
+#wrapper .sidebar-nav li a {
     display: block;
     text-decoration: none;
     color: #999999;
@@ -99,8 +118,11 @@ p, ol, ul, td {
     background: rgba(255,255,255,0.2);
 }
 
-.sidebar-nav li a:active,
-.sidebar-nav li a:focus {
+#wrapper .sidebar-nav li a:hover{
+    color: #fff;
+}
+
+.sidebar-nav li a:active, .sidebar-nav li a:focus {
     text-decoration: none;
 }
 
@@ -109,11 +131,11 @@ p, ol, ul, td {
     line-height: 60px;
 }
 
-.sidebar-nav > .sidebar-brand a {
+#wrapper .sidebar-nav > .sidebar-brand a {
     color: #999999;
 }
 
-.sidebar-nav > .sidebar-brand a:hover {
+#wrapper .sidebar-nav > .sidebar-brand a:hover {
     color: #fff;
     background: none;
 }
@@ -146,6 +168,8 @@ p, ol, ul, td {
     }
 }
 
+/* User info on Sidebar */
+
 .avatar {
     position: relative;
     margin: 15px 15px;
@@ -172,6 +196,8 @@ p, ol, ul, td {
   float:left;
 }
 
+/* Flash CSS */
+
 .flash{
   width: 100%;
   text-align: center;
@@ -194,7 +220,7 @@ p, ol, ul, td {
 }
 
 /* centered columns styles */
-/* centered columns styles */
+
 .row-centered {
     text-align:center;
 }
@@ -222,9 +248,12 @@ p, ol, ul, td {
 .clearfix{
   clear: both;
 }
+
 .center {
     text-align:center;
 }
+
+/* Form CSS */
 
 .center form {
     display:inline-block;
@@ -232,16 +261,6 @@ p, ol, ul, td {
 
 .center form .field{
     width: 100%;
-}
-
-.book{
-  width: 100%;
-}
-.book p{
-  width: 100%;
-}
-.book img{
-  margin: 0 auto;
 }
 
 .tag-grid-ul li {
@@ -261,11 +280,13 @@ p, ol, ul, td {
   font-size: 12px;
 }
 
-#nav-icon1{
+/* Toggle Button CSS */
+
+#nav-icon1 {
   width: 60px;
   height: 45px;
   position: relative;
-  margin: 10px auto;
+  margin: 5px auto;
   -webkit-transform: rotate(0deg);
   -moz-transform: rotate(0deg);
   -o-transform: rotate(0deg);
@@ -283,7 +304,7 @@ p, ol, ul, td {
   position: absolute;
   height: 9px;
   width: 100%;
-  background: #000;
+  background: #6d6d6d;
   border-radius: 9px;
   opacity: 1;
   left: 0;
@@ -296,6 +317,11 @@ p, ol, ul, td {
   -o-transition: .25s ease-in-out;
   transition: .25s ease-in-out;
 }
+
+#nav-icon1:hover span{
+    background: #000;
+}
+
 #nav-icon1 span:nth-child(1) {
   top: 0px;
 }
@@ -315,6 +341,7 @@ p, ol, ul, td {
   -o-transform: rotate(135deg);
   transform: rotate(135deg);
 }
+
 #nav-icon1.open span:nth-child(2) {
   opacity: 0;
   left: -60px;
@@ -328,6 +355,67 @@ p, ol, ul, td {
   transform: rotate(-135deg);
 }
 
+/* Back Button */
+
+#nav-icon2{
+  width: 60px;
+  height: 45px;
+  position: relative;
+  margin: 5px auto;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: .5s ease-in-out;
+  -moz-transition: .5s ease-in-out;
+  -o-transition: .5s ease-in-out;
+  transition: .5s ease-in-out;
+  cursor: pointer;
+  float:left;
+}
+
+#nav-icon2 span{
+  display: block;
+  position: absolute;
+  height: 9px;
+  width: 55%;
+  background: #6d6d6d;
+  border-radius: 9px;
+  opacity: 1;
+  left: 10px;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: .25s ease-in-out;
+  -moz-transition: .25s ease-in-out;
+  -o-transition: .25s ease-in-out;
+  transition: .25s ease-in-out;
+}
+
+#nav-icon2:hover span{
+    background: #000;
+}
+
+#nav-icon2 span:nth-child(1) {
+  top: 9px;
+  -webkit-transform: rotate(135deg);
+  -moz-transform: rotate(135deg);
+  -o-transform: rotate(135deg);
+  transform: rotate(135deg);
+
+}
+
+#nav-icon2 span:nth-child(2) {
+  top: 27px;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+/* Logo CSS */
+
 #logo-mini{
   position: absolute;;
   bottom: 0px;
@@ -336,4 +424,47 @@ p, ol, ul, td {
 
 #logo{
   margin: 0 auto;
+}
+
+#wrapper i.fa.fa-ban, #wrapper .ban-button{
+    color: #E62C2C;
+}
+
+#wrapper i.fa.fa-:hover, #wrapper .ban-button:hover{
+    color: #9E0909;
+}
+
+#wrapper i.fa.fa-plus-circle, #wrapper .unban-button{
+    color: #69C55B;
+}
+
+#wrapper i.fa.fa-plus-circle:hover, #wrapper .unban-button:hover{
+    color: #2D6919;
+}
+#wrapper i.fa.fa-arrow-circle-down, #wrapper .downgrade-button{
+    color: #A76BC9;
+}
+
+#wrapper i.fa.fa-arrow-circle-down:hover, #wrapper .downgrade-button:hover{
+    color: #510E78;
+}
+
+#wrapper i.fa.fa-arrow-circle-up, #wrapper .upgrade-button{
+    color: #63C7D6;
+}
+
+#wrapper i.fa.fa-arrow-circle-up:hover, #wrapper .upgrade-button:hover{
+    color: #0E6A78;
+}
+
+.user{
+    margin:15px;
+}
+
+.user p{
+    text-align: center;
+}
+.user .user-thumb{
+    display: block;
+    margin: 0 auto;
 }

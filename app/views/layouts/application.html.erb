@@ -1,92 +1,96 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Sakuragi</title>
-        <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-        <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-        <%= csrf_meta_tags %>
-        <%= favicon_link_tag 'favicon.png' %>
-    </head>
-    <body>
-        <div id="wrapper">
-        
-            <!-- Sidebar -->
-            <div id="sidebar-wrapper">
-                <ul class="sidebar-nav">
-                  <% if user_signed_in? %>
-                    <li class="sidebar-brand">
-                        <div class="user-info-index">
-                            <div class="avatar">
-                                <%= link_to image_tag(current_user.avatar.url(:small)), edit_user_registration_path %>
-                            </div>
-                            <h2 class="user-name"><%= link_to current_user.name + ' ' + current_user.last_name, edit_user_registration_path %></h2>
-                        </div>
-                    </li>
-                    <li>
-                        <%= link_to 'Home', root_path %>
-                    </li>
-                    <li>
-                        <%= link_to 'Upload new book', new_book_path %>
-                    </li>
-                    <li>
-                        <%= link_to 'Books', books_path %>
-                    </li>
-                    <li>
-                        <%= link_to 'Convertions', convertions_path %>
-                    </li>
-                    <li>
-                        <%= link_to 'Log Out', destroy_user_session_path, :method=>'delete' %>
-                    </li>
-                <% else %>
-                <li>
-                    <%= link_to 'Home', root_path %>
-                </li>
-                <li>
-                    <%= link_to 'Log In', new_user_session_path, class: 'login-path' %>
-                </li>
-                <li>
-                    <%= link_to 'Sign In', new_user_registration_path, class: 'sign-up-path' %>
-                    <br/>
-                </li>
-                <% end %>
-            </ul>
-            <div id="logo-mini">
-              <%= image_tag("logo_mini.png") %>
+  <head>
+    <title>Sakuragi</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+    <%= favicon_link_tag 'favicon.png' %>
+  </head>
+  <body>
+  <div id="wrapper">
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper">
+      <ul class="sidebar-nav">
+        <% if user_signed_in? %>
+        <li class="sidebar-brand">
+          <div class="user-info-index">
+            <div class="avatar">
+              <%= link_to image_tag(current_user.avatar.url(:small)), edit_user_registration_path %>
             </div>
+            <h2 class="user-name"><%= link_to current_user.name + ' ' + current_user.last_name, edit_user_registration_path %></h2>
+          </div>
+        </li>
+        <li>
+          <%= link_to (fa_icon "home", text: "Home"), root_path %>
+        </li>
+        <li>
+          <%= link_to (fa_icon "plus", text: "Upload New Book"), new_book_path %>
+        </li>
+        <li>
+          <%= link_to (fa_icon "book", text: "Books"), books_path %>
+        </li>
+        <li>
+          <%= link_to (fa_icon "exchange", text: "Convertions"), convertions_path %>
+        </li>
+        <% if current_user.admin? %>
+        <li>
+          <%= link_to (fa_icon "users", text: "Users"), users_path %>
+        </li>
+        <% end %>
+        <li>
+          <%= link_to (fa_icon "sign-out", text: "Log Out"), destroy_user_session_path, :method=>'delete' %>
+        </li>
+        <% else %>
+        <li>
+          <%= link_to (fa_icon "home", text: "Home"), root_path %>
+        </li>
+        <li>
+          <%= link_to (fa_icon "sign-in", text: "Log In"), new_user_session_path, class: 'login-path' %>
+        </li>
+        <li>
+          <%= link_to (fa_icon "user-plus", text: "Sign In"), new_user_registration_path, class: 'sign-up-path' %>
+          <br/>
+        </li>
+        <% end %>
+</ul>
+<div id="logo-mini">
+  <%= image_tag("logo_mini.png") %>
+</div>
+</div>
+<!-- /#sidebar-wrapper -->
+<!-- Page Content -->
+<div id="page-content-wrapper">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12">
+        <% flash.each do |name, msg| %>
+        <%= content_tag :div, msg, :id => "flash_#{name}", :class => "flash" if msg.is_a?(String) %>
+        <% end %>
+        <div id="nav-icon1" class="open">
+          <span></span>
+          <span></span>
+          <span></span>
         </div>
-        <!-- /#sidebar-wrapper -->
-        <!-- Page Content -->
-        <div id="page-content-wrapper">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <% if notice %>
-                    <p class="notice" <%= notice %></p>
-                    <% end %>
-                    <% if alert %>
-                <p class="alert" <%= alert %></p>
-                <% end %>
-                <%- flash.each do |name, msg| -%>
-                  <%= content_tag :div, msg, :id => "flash_#{name}", :class => "flash" if msg.is_a?(String) %>
-                <%- end -%>
-                <div id="nav-icon1" class="open">
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                </div>
-                <%= yield %>
-            </div>
+        <%= link_to :back do %>
+        <div id="nav-icon2">
+          <span></span>
+          <span></span>
         </div>
+        <% end %>
+        <%= yield %>
+      </div>
     </div>
+  </div>
 </div>
 <!-- /#wrapper -->
 </div>
 <script>
-$('#nav-icon1').click(function(e){
+  $('#nav-icon1').click(function(e){
 	$(this).toggleClass('open');
   e.preventDefault();
   $("#wrapper").toggleClass("toggled");
-});
+  });
 </script>
 </body>
 </html>

@@ -46,7 +46,7 @@ gem 'has_scope'
 gem "binding_of_caller"
 # gem 'cloudconvert'
 gem 'rails_12factor'
-
+gem 'font-awesome-rails'
 gem 'client_side_validations'
 
 source 'https://rails-assets.org' do

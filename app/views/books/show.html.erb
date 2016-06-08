@@ -1,6 +1,20 @@
+<div class="search-form">
+  <%= link_to (fa_icon "search 4x", text: ""), search_form_path,
+      class: "search" %>
+</div>
 <div class="clearfix"></div>
 <div class="row">
-  <h1 class="center"><%= @book.name %></h1>
+    <h1 class="center book-title">
+        <%= link_to @book.name, pdfjs.full_path(file: @book.document.url) %>
+          <% if (!current_user.books.include?(@book)) %>
+          <%= link_to (fa_icon "plus", text: ""), add_to_library_path(@book) %>
+          <% end %>
+          <% if(current_user.admin? || (@book.uploader == current_user && @book.private)) %>
+          <%= link_to (fa_icon "pencil", text: ""), edit_book_path(@book) %>
+          <%= link_to (fa_icon "times", text: ""), @book, method: :delete,
+              data: { confirm: 'Are you sure?' } %>
+          <% end %>
+    </h1>
   <div class="col-md-6 center">
     <% if @formato == "pdf"%>
       <%= link_to image_tag(@book.thumbnail(:medium), class: "book-preview"), pdfjs.full_path(file: @book.document.url) %>
@@ -11,23 +25,37 @@
     <% end%>
   </div>
   <div class="col-md-6 center">
-    <h3>Book Tags </h3>
+    <% if current_user.admin? %>
+    <h3>Uploader</h3>
+    <div class="user">
+      <%= image_tag @book.uploader.avatar.url(:thumb), class: 'user-thumb' %>
+      <%= @book.uploader.name %>
+      <% if @book.uploader != current_user %>
+      <br>
+        <% if @book.uploader.banned? %>
+        <%= link_to (fa_icon "plus-circle", text: "Unban"), unban_user_path(@book.uploader), class: 'unban-button' %>
+        <% else %>
+        <%= link_to (fa_icon "ban", text: "Ban"), ban_user_path(@book.uploader), class: 'ban-button' %>
+        <% end %>
+      <br>
+      <% if @book.uploader.admin? %>
+      <%= link_to (fa_icon "arrow-circle-down", text: "Downgrade"), downgrade_user_path(@book.uploader), class: 'downgrade-button' %>
+      <% else %>
+      <%= link_to (fa_icon "arrow-circle-up", text: "Upgrade"), upgrade_user_path(@book.uploader), class: 'upgrade-button' %>
+      <% end %>
+      <% end %>
+    </div>
+    <% end %>
+    <h3>Book Tags</h3>
     <% @book.tags.each do |tag| %>
       <%= tag.name %><br/>
     <% end %>
+    <h3>Convert to</h3>
+    <div class="btn-group">
+    <% @supported_files.each do |s| %>
+        <%= link_to (s), convert_path(@book, s), :class => "btn btn-default" %>
+    <% end %>
+    </div>
   </div>
   <div class="clearfix"></div>
-  <% if(@book.uploader == current_user) %>
-    <%= link_to 'Edit', edit_book_path(@book) %>
-    <%= link_to 'Delete', @book, method: :delete, data: { confirm: 'Are you sure?' } %>
-  <% end %>
-  <% if(!current_user.books.include?(@book)) %>
-    <%= link_to 'Add to my library', add_to_library_path(@book) %>
-  <% end %>
-  <% @supported_files.each do |s| %>
-    <%= link_to ('Convert to ' + s), convert_path(@book, s) %>
-  <% end %>
-  <%= link_to 'Back', books_path %>
 </div>
-
-

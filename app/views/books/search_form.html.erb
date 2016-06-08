@@ -3,7 +3,7 @@
 <%= form_for(Book.new, url: search_path) do |f| %>
 <div class="name-book">
     <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, class: "form-control" %>
 </div>
 
 <div class="tag-title">
@@ -14,8 +14,8 @@
       <% @tags.each do |t| %>
         <li>
           <div class="form-group">
-            <%= f.label t.name  %>
             <%= check_box_tag "tags[]", t.id %>
+            <%= f.label t.name  %>
           </div>
         </li>
       <% end %>
@@ -28,4 +28,3 @@
 <% end %>
 </div>
 
-<%= link_to 'Back', books_path %>

@@ -8,14 +8,17 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'welcome#index'
 
-
   get 'books/:id/add_to_library' => 'books#add_to_library', as: :add_to_library
   get 'convertions/:id/download' => 'convertions#download_convertion', as: :download_convertion
   get 'convertions' => 'convertions#index', as: :convertions
   get 'books/:id/convert/:output_format' => 'books#convert', as: :convert
   get 'books/:id/readepub' => 'books#readepub', as: :read_epub
-
+  get 'users/ban/:id' => 'users#ban', as: :ban_user
+  get 'users/unban/:id' => 'users#unban', as: :unban_user
+  get 'users/upgrade/:id' => 'users#upgrade', as: :upgrade_user
+  get 'users/downgrade/:id' => 'users#downgrade', as: :downgrade_user
   devise_for :users, controllers: { registrations: "registrations" }
+  resources :users, only: [:index, :destroy]
   mount PdfjsViewer::Rails::Engine => "/pdfjs", as: 'pdfjs'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
