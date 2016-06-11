@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160607161354) do
+ActiveRecord::Schema.define(version: 20160610174153) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 20160607161354) do
     t.integer  "thumbnail_file_size"
     t.datetime "thumbnail_updated_at"
     t.integer  "uploader_id"
+    t.string   "author"
   end
 
   create_table "books_tags", id: false, force: :cascade do |t|

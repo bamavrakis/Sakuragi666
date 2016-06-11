@@ -9,6 +9,7 @@ describe "uploading book process", :type => :feature do
   it "can upload a book" do
     visit new_book_path
     fill_in "book-name-form", with: "Example book"
+    fill_in "book-author-form", with: "Example author"
     check "book-private-form"
     attach_file "book-document-form", "app/assets/documents/test.pdf"
     click_button "New Book"

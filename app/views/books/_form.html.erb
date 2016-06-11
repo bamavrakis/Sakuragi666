@@ -16,6 +16,10 @@
     <%= f.text_field :name, id: "book-name-form", class: "form-control" %>
   </div>
   <div class="form-group">
+    <%= f.label :author %><br>
+    <%= f.text_field :author, id: "book-author-form", class: "form-control" %>
+  </div>
+  <div class="form-group">
     <%= f.label :private %><br>
     <%= f.check_box :private, id: "book-private-form" %>
   </div>

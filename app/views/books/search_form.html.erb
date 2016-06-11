@@ -1,9 +1,23 @@
 <div id="search-form" class="form">
 
 <%= form_for(Book.new, url: search_path) do |f| %>
+
+<br/>
+<br/>
+<br/>
+
+<div class="tag-title">
+  <h2> Search your book by name and/or author: </h2>
+</div>
+
 <div class="name-book">
     <%= f.label :name %><br>
     <%= f.text_field :name, class: "form-control" %>
+</div>
+
+<div class="author-book">
+    <%= f.label :author %><br>
+    <%= f.text_field :author, class: "form-control" %>
 </div>
 
 <div class="tag-title">
@@ -27,4 +41,3 @@
 </div>
 <% end %>
 </div>
-

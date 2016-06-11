@@ -153,11 +153,14 @@ class BooksController < ApplicationController
     @tags = Tag.all
   end
 
-  # Books searching (for now, only by book title).
+  # Books searching.
   def search
     @searched_books = Book.public_books
     if search_params[:name].blank? == false
       @searched_books = @searched_books.where("name like ?", '%' + search_params[:name] + '%')
+    end
+    if search_params[:author].blank? == false
+      @searched_books = @searched_books.where("author like ?", '%' + search_params[:author] + '%')
     end
     if params[:tags]
       @tags = Tag.find(params[:tags])
@@ -176,13 +179,12 @@ class BooksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def book_params
-      params.require(:book).permit(:name, :popularity, :private, :document)
+      params.require(:book).permit(:name, :author, :popularity, :private, :document)
     end
 
     def search_params
-      params.require(:book).permit(:name)
+      params.require(:book).permit(:name, :author)
     end
-
 
     def set_output_format
       @output_format = params[:output_format]
