@@ -31,7 +31,15 @@
           <%= link_to (fa_icon "book", text: "Books"), books_path %>
         </li>
         <li>
-          <%= link_to (fa_icon "exchange", text: "Convertions"), convertions_path %>
+          <%= link_to convertions_path do %>
+          <%= fa_icon "exchange", text: "Convertions" %>
+          <% unless (current_user.convertions.ready.empty?) %>
+          <span class="notification-label notification-label-green"><%= current_user.convertions.ready.length %></span>
+          <% end %>
+          <% unless (current_user.convertions.waiting.empty?) %>
+          <span class="notification-label notification-label-yellow"><%= current_user.convertions.waiting.length %></span>
+          <% end %>
+          <% end %>
         </li>
         <% if current_user.admin? %>
         <li>
@@ -72,6 +80,7 @@
           <span></span>
           <span></span>
         </div>
+        <a href="javascript:history.back()">Refine Search</a>
         <%= link_to :back do %>
         <div id="nav-icon2">
           <span></span>

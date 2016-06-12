@@ -468,3 +468,20 @@ p, ol, ul, td {
     display: block;
     margin: 0 auto;
 }
+
+.notification-label {
+  padding: 1px 5px;
+  font-size: 0.8em;
+  border-radius: 50%;
+  color: #fff;
+  margin-left: 5px;
+  font-weight: bold;
+}
+
+.notification-label.notification-label-green {
+  background: #2D6919;
+}
+
+.notification-label.notification-label-yellow {
+  background: #CC7400;
+}

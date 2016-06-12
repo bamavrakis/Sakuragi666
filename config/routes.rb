@@ -1,22 +1,25 @@
 Rails.application.routes.draw do
+  get 'download/download'
+
   # HACER BIEN LAS RUTAS LIBROS-USUARIO, MEJOR HACERLO MANUAL!
   resources :tags
   resources :books
   get 'search_form' => 'books#search_form'
   post 'search' => 'books#search'
-  get 'welcome/index'
   # You can have the root of your site routed with "root"
   root 'welcome#index'
 
   get 'books/:id/add_to_library' => 'books#add_to_library', as: :add_to_library
   get 'convertions/:id/download' => 'convertions#download_convertion', as: :download_convertion
   get 'convertions' => 'convertions#index', as: :convertions
-  get 'books/:id/convert/:output_format' => 'books#convert', as: :convert
+  get 'books/:id/convert/:output_format' => 'convertions#convert', as: :convert
   get 'books/:id/readepub' => 'books#readepub', as: :read_epub
   get 'users/ban/:id' => 'users#ban', as: :ban_user
   get 'users/unban/:id' => 'users#unban', as: :unban_user
   get 'users/upgrade/:id' => 'users#upgrade', as: :upgrade_user
   get 'users/downgrade/:id' => 'users#downgrade', as: :downgrade_user
+#  get 'download/:download_link' => 'download#download', as: :download
+  match 'download/:download_link' => 'download#download', :via => :get, as: :download
   devise_for :users, controllers: { registrations: "registrations" }
   resources :users, only: [:index, :destroy]
   mount PdfjsViewer::Rails::Engine => "/pdfjs", as: 'pdfjs'
