@@ -5,7 +5,11 @@
 <div class="clearfix"></div>
 <div class="row">
     <h1 class="center book-title">
+      <% if @formato == "pdf" %>
         <%= link_to @book.name, pdfjs.full_path(file: @book.document.url) %>
+        <% elsif @formato == "epub" %>
+      <%= link_to @book.name, read_epub_path(@book) %>
+      <% end %>
           <% if (!current_user.books.include?(@book)) %>
           <%= link_to (fa_icon "plus", text: ""), add_to_library_path(@book) %>
           <% end %>
@@ -21,7 +25,7 @@
       <%= @extended_path %>
       <%= @path %>
     <% elsif @formato == "epub"%>
-      <%= link_to 'Read Book', read_epub_path(@book) %>
+      <%= link_to image_tag(@book.thumbnail(:medium), class: "book-preview"), read_epub_path(@book) %>
     <% end%>
   </div>
   <div class="col-md-6 center">
