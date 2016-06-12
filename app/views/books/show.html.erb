@@ -56,6 +56,16 @@
         <%= link_to (s), convert_path(@book, s), :class => "btn btn-default" %>
     <% end %>
     </div>
+    <h3>Download book</h3>
+    <div class="btn-group">
+    <%= link_to 'Download', download_book_path(@book), :class => "btn btn-default" %>
+    </div>
+    <% if @book.private == false or @book.uploader == current_user %>
+      <h3>Send to a friend</h3>
+      <div class="btn-group">
+      <%= link_to 'Send', send_form_path(@book), :class => "btn btn-default" %>
+      </div>
+    <% end %>
   </div>
   <div class="clearfix"></div>
 </div>

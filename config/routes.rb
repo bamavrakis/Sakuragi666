@@ -13,6 +13,9 @@ Rails.application.routes.draw do
   get 'convertions' => 'convertions#index', as: :convertions
   get 'books/:id/convert/:output_format' => 'books#convert', as: :convert
   get 'books/:id/readepub' => 'books#readepub', as: :read_epub
+  get 'books/:id/send_form' => 'books#send_form', as: :send_form
+  post 'books/:id/send_book' => 'books#send_book', as: :send_book
+  get 'books/:id/download_book' => 'books#download_book', as: :download_book
   get 'users/ban/:id' => 'users#ban', as: :ban_user
   get 'users/unban/:id' => 'users#unban', as: :unban_user
   get 'users/upgrade/:id' => 'users#upgrade', as: :upgrade_user

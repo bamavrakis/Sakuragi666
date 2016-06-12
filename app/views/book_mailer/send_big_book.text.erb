@@ -1,0 +1,13 @@
+You have just received a book from a Sakuragi user!
+===================================================
+
+User "<%= @user.name + ' ' + @user.last_name %>" sent you the book
+"<%= @book.name %>" from author "<%= @book.author %>".
+
+The user says:
+
+"<%=@message %>"
+
+You can download it here: <%= link_to 'Download', download_book_path(@book) %>
+
+Enjoy your reading!

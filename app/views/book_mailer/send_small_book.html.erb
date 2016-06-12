@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1> You have just received a book from a Sakuragi user! </h1>
+    <p>
+      User "<%= @user.name + ' ' + @user.last_name %>" sent you the book
+      "<%= @book.name %>" from author "<%= @book.author %>". <br> <br>
+
+      The user says: <br> <br>
+
+      "<%= @message %>" <br> <br>
+
+      Enjoy your reading!</p>
+  </body>
+</html>

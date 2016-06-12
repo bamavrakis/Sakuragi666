@@ -171,6 +171,36 @@ class BooksController < ApplicationController
     @searched_books = @searched_books.paginate(page: params[:search_books_page], per_page: 9)
   end
 
+  def send_form
+    @book = Book.find(params[:id])
+  end
+
+  def send_book
+    @book = Book.find(params[:id])
+    size = @book.document.size
+    email = params[:email]
+    message = params[:message]
+    if size < 25000000
+      BookMailer.send_small_book(email,current_user,@book,message).deliver_now
+    else
+      BookMailer.send_big_book(email,current_user,@book,message).deliver_now
+    end
+    redirect_to @book, notice: 'Book sent successfully'
+  end
+
+  def download_book
+    @book = Book.find(params[:id])
+    @formato = File.extname(@book.document.path).gsub('.','')
+    book_name = @book.name.gsub(' ','-').downcase + '.' + @formato
+    if @formato == "pdf"
+      send_file @book.document.path, :type => 'application/pdf', :filename => book_name
+    elsif @formato == "epub"
+      send_file @book.document.path, :type => 'application/epub+zip', :filename => book_name
+    else
+      send_file @book.document.path, :type => 'application/vnd.amazon.ebook', :filename => book_name
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_book

@@ -48,6 +48,7 @@ gem "binding_of_caller"
 gem 'rails_12factor'
 gem 'font-awesome-rails'
 gem 'client_side_validations'
+gem 'figaro'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.1.0'

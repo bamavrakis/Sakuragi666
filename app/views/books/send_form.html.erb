@@ -1,0 +1,31 @@
+<div id="send-form" class="form">
+
+<%= form_tag "/books/#{@book.id}/send_book" do %>
+
+<br>
+<br>
+<br>
+
+<div class="tag-title">
+  <h2> Send this book to the following email: </h2>
+</div>
+
+<div class="receiver-email">
+    <%= label_tag :email %><br>
+    <%= text_field_tag :email %>
+</div>
+
+<div class="tag-title">
+  <h2> Add a message: </h2>
+</div>
+
+<div class="receiver-message">
+    <%= label_tag :message %><br>
+    <%= text_field_tag :message %>
+</div>
+
+<div class="actions">
+    <%= submit_tag "Send", id: 'send_book_button' %>
+</div>
+<% end %>
+</div>
