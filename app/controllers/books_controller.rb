@@ -3,7 +3,7 @@ require 'will_paginate/array'
 class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update, :destroy, :add_to_library, :convert, :readepub]
   before_action :set_output_format, only: [:convert]
-  before_action :authenticate_user!
+  before_action :authenticate_user!, :except => :download_book
   has_scope :public_books, :type => :boolean
   layout false, only: [:readepub]
 
