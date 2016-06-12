@@ -24,7 +24,7 @@ class ConvertionsController < ApplicationController
     @download_link = @convertion.download_link
     @convertion.destroy
     respond_to do |format|
-      format.html { redirect_to download_path, download_link: @download_link }
+      format.html { redirect_to @download_link }
       format.json { head :no_content }
     end
   end

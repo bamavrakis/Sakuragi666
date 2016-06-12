@@ -50,12 +50,14 @@
     <% @book.tags.each do |tag| %>
       <%= tag.name %><br/>
     <% end %>
+    <% if(current_user.convertions.length < 10) %>
     <h3>Convert to</h3>
     <div class="btn-group">
     <% @supported_files.each do |s| %>
         <%= link_to (s), convert_path(@book, s), :class => "btn btn-default" %>
     <% end %>
-    </div>
+  </div>
+  <% end %>
   </div>
   <div class="clearfix"></div>
 </div>
