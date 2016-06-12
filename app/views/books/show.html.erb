@@ -50,12 +50,16 @@
     <% @book.tags.each do |tag| %>
       <%= tag.name %><br/>
     <% end %>
+    <% if(current_user.convertions.length < 10) %>
     <h3>Convert to</h3>
     <div class="btn-group">
     <% @supported_files.each do |s| %>
         <%= link_to (s), convert_path(@book, s), :class => "btn btn-default" %>
     <% end %>
     </div>
+    <% else %>
+    <h3>Remember, there's a limit of 9 active convertions</h3>
+    <% end %>
     <h3>Download book</h3>
     <div class="btn-group">
     <%= link_to 'Download', download_book_path(@book), :class => "btn btn-default" %>

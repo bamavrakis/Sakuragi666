@@ -1,8 +1,7 @@
 require 'will_paginate/array'
 
 class BooksController < ApplicationController
-  before_action :set_book, only: [:show, :edit, :update, :destroy, :add_to_library, :convert, :readepub]
-  before_action :set_output_format, only: [:convert]
+  before_action :set_book, only: [:show, :edit, :update, :destroy, :add_to_library, :readepub]
   before_action :authenticate_user!, :except => :download_book
   has_scope :public_books, :type => :boolean
   layout false, only: [:readepub]
@@ -95,59 +94,6 @@ class BooksController < ApplicationController
     end
   end
 
-  # def convert
-  #   @current_format = File.extname(@book.document.path).gsub('.','')
-  #   @response = HTTParty.post('https://api.cloudconvert.com/process',
-  #   body: {
-  #     apikey: "mcgo6n6wlB_vfGnPwjiuxkytOtV3PIs3A1MmC-DJescayEgxqKYHu4_HWAfsCqmKssG4hdOO8K4AZnSM51oz8A",
-  #     inputformat: @current_format,
-  #     outputformat: @output_format}.to_json,
-  #   :headers => {
-  #       'Content-Type' => 'application/json',
-  #       'Accept' => 'application/json'
-  #   })
-  #   @upload = HTTParty.post(@response['url'],
-  #   body: {
-  #   input: "upload",
-  #   outputformat: @output_format,
-  #   save: true}.to_json,
-  #   :headers => {
-  #       'Content-Type' => 'application/json',
-  #       'Accept' => 'application/json'
-  #   })
-  #   HTTMultiParty.put(@upload['upload']['url'] + '/' + File.basename(@book.document.path), :query => {
-  #     'file' =>  File.new(@book.document.path)})
-  #   @conversion = Convertion.new(user_id: current_user.id, convertion_url: @response['url'], name: @book.name)
-  #   @conversion.save
-  #   redirect_to @book, notice: 'Book added to your conversions'
-  # end
-
-  def convert
-    @current_format = File.extname(@book.document.path).gsub('.','')
-    @response = HTTParty.post('https://api.cloudconvert.com/process',
-    body: {
-      apikey: "mcgo6n6wlB_vfGnPwjiuxkytOtV3PIs3A1MmC-DJescayEgxqKYHu4_HWAfsCqmKssG4hdOO8K4AZnSM51oz8A",
-      inputformat: @current_format,
-      outputformat: @output_format}.to_json,
-    :headers => {
-        'Content-Type' => 'application/json',
-        'Accept' => 'application/json'
-    })
-    @upload = HTTParty.post(@response['url'],
-    body: {
-    input: "download",
-    file: @book.document.path,
-    outputformat: @output_format,
-    save: true}.to_json,
-    :headers => {
-        'Content-Type' => 'application/json',
-        'Accept' => 'application/json'
-    })
-    @conversion = Convertion.new(user_id: current_user.id, convertion_url: @response['url'], name: @book.name)
-    @conversion.save
-    redirect_to @book, notice: 'Book added to your conversions'
-  end
-
   # Initial form for searching (we add this so we can make the tag grid).
   def search_form
     @tags = Tag.all
@@ -214,10 +160,6 @@ class BooksController < ApplicationController
 
     def search_params
       params.require(:book).permit(:name, :author)
-    end
-
-    def set_output_format
-      @output_format = params[:output_format]
     end
 
 end
