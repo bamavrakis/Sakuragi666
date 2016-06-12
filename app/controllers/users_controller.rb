@@ -49,4 +49,10 @@ class UsersController < ApplicationController
     end
   end
 
+  #def recommend
+
+    #@recommended = find_recommendations_for(@current_user, :strategy => :pearson).paginate(page: params[:my_books_page], per_page: 9)
+  #end
+
+
 end

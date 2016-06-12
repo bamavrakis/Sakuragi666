@@ -79,6 +79,8 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.10.0)
+    coletivo (0.0.3)
+      rails (>= 3.0.7)
     concurrent-ruby (1.0.2)
     debug_inspector (0.0.2)
     devise (4.1.1)
@@ -265,6 +267,7 @@ DEPENDENCIES
   capybara
   client_side_validations
   coffee-rails (~> 4.1.0)
+  coletivo
   devise
   factory_girl_rails (~> 4.0)
   font-awesome-rails

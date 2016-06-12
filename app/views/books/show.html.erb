@@ -56,6 +56,19 @@
         <%= link_to (s), convert_path(@book, s), :class => "btn btn-default" %>
     <% end %>
     </div>
+    <h3> Rate Book</h3>
+
+
+    <h5> Average Rating: <%= rate_average %> </h5>
+    
+
+    <div>
+    <%= form_tag( rate_book_path) do  %>
+      <%= text_field_tag "rating"%>
+      <%= submit_tag 'Rate Book' %>
+    <% end %>
+    <%= link_to "People who read this book also liked", recomendations_path(@book)%>
+    </div>
   </div>
   <div class="clearfix"></div>
 </div>
