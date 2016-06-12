@@ -9,6 +9,8 @@ class BooksController < ApplicationController
   def index
     @books = Book.public_books.paginate(page: params[:books_page], per_page: 9)
     @my_books = current_user.books.paginate(page: params[:my_books_page], per_page: 9)
+    @counter_public = 0
+    @counter_private = 0
   end
 
   def show
@@ -45,14 +47,16 @@ class BooksController < ApplicationController
     end
     respond_to do |format|
       if @book.save
-        @formato = File.extname(@book.document.path).gsub('.','')
-        if @formato == "pdf"
-          pdf = Magick::ImageList.new(@book.document.path)
-          thumb = pdf.scale(340, 440)
-          file = Tempfile.new(['processed','.png'])
-          thumb.write(file.path)
-          @book.thumbnail = file
-          @book.save
+        if !@book.thumbnail.exists?
+          @formato = File.extname(@book.document.path).gsub('.','')
+          if @formato == "pdf"
+            pdf = Magick::ImageList.new(@book.document.path + "[0]")
+            thumb = pdf.scale(340, 440)
+            file = Tempfile.new(['processed','.png'])
+            thumb.write(file.path)
+            @book.thumbnail = file
+            @book.save
+          end
         end
         current_user.books << @book
         format.html { redirect_to @book, notice: 'Book was successfully created.' }
@@ -122,7 +126,7 @@ class BooksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def book_params
-      params.require(:book).permit(:name, :popularity, :private, :document)
+      params.require(:book).permit(:name, :popularity, :private, :document, :thumbnail)
     end
 
     def search_params
