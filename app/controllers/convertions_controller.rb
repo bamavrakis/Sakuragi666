@@ -2,10 +2,19 @@ class ConvertionsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_output_format, only: [:convert]
   before_action :set_book, only: [:convert]
+  before_action :set_convertion, only: [:destroy]
 
   def index
     @ready = current_user.convertions.ready
     @waiting = current_user.convertions.waiting
+  end
+
+  def destroy
+    @convertion.destroy
+    respond_to do |format|
+      format.html { redirect_to convertions_url, notice: 'Convertion was successfully destroyed.' }
+      format.json { head :no_content }
+    end
   end
 
   def convert
@@ -33,6 +42,10 @@ class ConvertionsController < ApplicationController
 
   def set_book
     @book = Book.find(params[:id])
+  end
+
+  def set_convertion
+    @convertion = Convertion.find(params[:id])
   end
 
   def set_output_format

@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get 'books/:id/add_to_library' => 'books#add_to_library', as: :add_to_library
   get 'convertions/:id/download' => 'convertions#download_convertion', as: :download_convertion
   get 'convertions' => 'convertions#index', as: :convertions
+  delete 'convertions/:id' => 'convertions#destroy', as: :convertion
   get 'books/:id/convert/:output_format' => 'convertions#convert', as: :convert
   get 'books/:id/readepub' => 'books#readepub', as: :read_epub
   get 'users/ban/:id' => 'users#ban', as: :ban_user
