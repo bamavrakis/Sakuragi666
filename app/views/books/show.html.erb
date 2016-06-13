@@ -69,6 +69,11 @@
     <% end %>
     <%= link_to "People who read this book also liked", recomendations_path(@book)%>
     </div>
+    <h3> Tweets about this book </h3>
+    <%@tweets.each do |tweet|%>
+      <p><font size="4"><%=tweet.user.screen_name%></font>:  <font size="2"><%=tweet.text%></font> </p>
+      
+    <% end %>
   </div>
   <div class="clearfix"></div>
 </div>

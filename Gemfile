@@ -49,6 +49,7 @@ gem 'rails_12factor'
 gem 'font-awesome-rails'
 gem 'client_side_validations'
 gem 'coletivo'
+gem 'twitter'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.1.0'

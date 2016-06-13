@@ -21,7 +21,13 @@ class BooksController < ApplicationController
     elsif @formato == "pdf"
       @reader = PDF::Reader.new(open(@book.document.path))
     end
-
+    @client = Twitter::REST::Client.new do |config|
+      config.consumer_key        = "in6d6hAzrZR7kHndmbEJlYDj0"
+      config.consumer_secret     = "qGu2j1olTgUFj1SOIbeLC8ir6WKQlpFagUiuJHI9nx1k9poAb5"
+      config.access_token        = "4120758544-yXuOQj3MoMajzGJBA7MURJYK5batw6pcu6TyqwV"
+      config.access_token_secret = "RntyIjCItABYGiBalTBRlLtqnnNGOgFWYvtAre69oLF6H"
+    end
+    @tweets = @client.search("\"#{@book.name}\"", result_type: "recent").take(5)
 
   end
 
