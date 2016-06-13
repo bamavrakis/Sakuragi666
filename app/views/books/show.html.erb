@@ -6,9 +6,9 @@
 <div class="row">
     <h1 class="center book-title">
       <% if @formato == "pdf" %>
-        <%= link_to @book.name, pdfjs.full_path(file: @book.document.url) %>
+        <%= link_to @book.name + ' - ' + @book.author, pdfjs.full_path(file: @book.document.url) %>
         <% elsif @formato == "epub" %>
-      <%= link_to @book.name, read_epub_path(@book) %>
+      <%= link_to @book.name + ' - ' + @book.author, read_epub_path(@book) %>
       <% end %>
           <% if (!current_user.books.include?(@book)) %>
           <%= link_to (fa_icon "plus", text: ""), add_to_library_path(@book) %>
