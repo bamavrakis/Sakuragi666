@@ -145,7 +145,7 @@ end
 @user3.books.each do |book|
   book.tags = @tags.sample(3)
 end
-<<<<<<< HEAD
+
 
 @user4.books.each do |book|
   book.tags = @tags.sample(3)
