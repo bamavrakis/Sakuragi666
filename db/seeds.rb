@@ -14,6 +14,7 @@ thumb.write "app/assets/documents/test.png"
 User.create(email: "oscar@oscar.cl", name: "Oscar", last_name: "Estay", password: "password", password_confirmation: "password", avatar: File.new("app/assets/images/bad_joke.png"), admin: true)
 User.create(email: "germy@germy.cl", name: "German", last_name: "Contreras", password: "123456", password_confirmation: "123456", avatar: File.new("app/assets/images/bad_joke.png"), admin: true)
 User.create(email: "bastian@bastian.cl", name: "Bastian", last_name: "Mavrakis", password: "lalala", password_confirmation: "lalala", avatar: File.new("app/assets/images/bad_joke.png"), admin: false)
+
 User.create(email: "sakuragi@sakuragi.jp", name: "Hanamichi", last_name: "Sakuragi", password: "haruko", password_confirmation: "haruko", avatar: File.new("app/assets/images/sakuragi.jpg"), admin: false)
 User.create(email: "rukawa@rukawa.jp", name: "Kaede", last_name: "Rukawa", password: "sleeping", password_confirmation: "sleeping", avatar: File.new("app/assets/images/rukawa.png"), admin: false)
 User.create(email: "akagi@akagi.jp", name: "Takenori", last_name: "Akagi", password: "banana", password_confirmation: "banana", avatar: File.new("app/assets/images/akagi.jpg"), admin: false)
@@ -21,6 +22,7 @@ User.create(email: "kogure@kogure.jp", name: "Kiminobu", last_name: "Kogure", pa
 User.create(email: "miyagi@miyagi.jp", name: "Ryota", last_name: "Miyagi", password: "aya-chan", password_confirmation: "aya-chan", avatar: File.new("app/assets/images/miyagi.jpeg"), admin: false)
 User.create(email: "haruko@haruko.jp", name: "Haruko", last_name: "Akagi", password: "rukawa", password_confirmation: "rukawa", avatar: File.new("app/assets/images/haruko.jpg"), admin: false)
 User.create(email: "ayako@ayako.jp", name: "Ayako", last_name: "Chan", password: "manager", password_confirmation: "manager", avatar: File.new("app/assets/images/ayako.jpg"), admin: false)
+
 
 @user1 = User.find(1)
 @user2 = User.find(2)
@@ -32,6 +34,7 @@ User.create(email: "ayako@ayako.jp", name: "Ayako", last_name: "Chan", password:
 @user8 = User.find(8)
 @user9 = User.find(9)
 @user10 = User.find(10)
+
 
 Book.create(uploader_id: 1, name: "Moby Dick", author: "Herman Melville", private: true, document: file, thumbnail: File.new("app/assets/documents/test.png"))
 Book.create(uploader_id: 1, name: "Frankenstein", author: "Mary Wollstonecraft Shelley", private: false, document: file, thumbnail: File.new("app/assets/documents/test.png"))
@@ -142,6 +145,7 @@ end
 @user3.books.each do |book|
   book.tags = @tags.sample(3)
 end
+<<<<<<< HEAD
 
 @user4.books.each do |book|
   book.tags = @tags.sample(3)
@@ -171,4 +175,17 @@ end
   book.tags = @tags.sample(3)
 end
 
+Book.all.each do |libro|
+	@user1.rate!(libro,Random.new.rand(1..4))
+	@user2.rate!(libro,Random.new.rand(1..4))
+	@user3.rate!(libro,Random.new.rand(1..4))
+	@user4.rate!(libro,Random.new.rand(1..4))
+	@user5.rate!(libro,Random.new.rand(1..4))
+	@user6.rate!(libro,Random.new.rand(1..4))
+	@user7.rate!(libro,Random.new.rand(1..4))
+	@user8.rate!(libro,Random.new.rand(1..4))
+	@user9.rate!(libro,Random.new.rand(1..4))
+	@user10.rate!(libro,Random.new.rand(1..4))
+
+end
 file.close

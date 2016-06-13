@@ -22,7 +22,12 @@ Rails.application.routes.draw do
   get 'users/unban/:id' => 'users#unban', as: :unban_user
   get 'users/upgrade/:id' => 'users#upgrade', as: :upgrade_user
   get 'users/downgrade/:id' => 'users#downgrade', as: :downgrade_user
+
 #   get 'download/:download_host/:download_link' => 'download#download', as: :download
+
+  get 'books/recomendations/:id' => 'books#recommend', as: :recomendations
+  post 'books/rate/:id' => 'books#rate_book', as: :rate_book
+
   devise_for :users, controllers: { registrations: "registrations" }
   resources :users, only: [:index, :destroy]
   mount PdfjsViewer::Rails::Engine => "/pdfjs", as: 'pdfjs'

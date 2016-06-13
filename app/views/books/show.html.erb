@@ -61,6 +61,7 @@
         <%= link_to (s), convert_path(@book, s), :class => "btn btn-default" %>
     <% end %>
     </div>
+
     <% else %>
     <h3>Remember, there's a limit of 9 active convertions</h3>
     <% end %>
@@ -73,6 +74,24 @@
       <div class="btn-group">
       <%= link_to 'Send', send_form_path(@book), :class => "btn btn-default" %>
       </div>
+
+    <h3> Rate Book</h3>
+
+
+    <h5> Average Rating: <%= rate_average %> </h5>
+    
+
+    <div>
+    <%= form_tag( rate_book_path) do  %>
+      <%= text_field_tag "rating"%>
+      <%= submit_tag 'Rate Book' %>
+    <% end %>
+    <%= link_to "People who read this book also liked", recomendations_path(@book)%>
+    </div>
+    <h3> Tweets about this book </h3>
+    <%@tweets.each do |tweet|%>
+      <p><font size="4"><%=tweet.user.screen_name%></font>:  <font size="2"><%=tweet.text%></font> </p>
+      
     <% end %>
   </div>
   <div class="clearfix"></div>

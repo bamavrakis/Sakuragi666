@@ -13,6 +13,7 @@
 
 ActiveRecord::Schema.define(version: 20160612182044) do
 
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -63,6 +64,18 @@ ActiveRecord::Schema.define(version: 20160612182044) do
   end
 
   add_index "convertions", ["user_id"], name: "index_convertions_on_user_id", using: :btree
+
+  create_table "person_ratings", force: :cascade do |t|
+    t.integer  "person_id"
+    t.string   "person_type"
+    t.integer  "rateable_id"
+    t.string   "rateable_type"
+    t.decimal  "weight",        precision: 5, scale: 2
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "person_ratings", ["rateable_type"], name: "index_person_ratings_on_rateable_type", using: :btree
 
   create_table "tags", force: :cascade do |t|
     t.string   "name"

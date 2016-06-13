@@ -41,6 +41,7 @@
           <% end %>
           <% end %>
         </li>
+
         <% if current_user.admin? %>
         <li>
           <%= link_to (fa_icon "users", text: "Users"), users_path %>

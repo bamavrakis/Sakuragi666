@@ -22,6 +22,14 @@ class BooksController < ApplicationController
     elsif @formato == "pdf"
       @reader = PDF::Reader.new(open(@book.document.path))
     end
+    @client = Twitter::REST::Client.new do |config|
+      config.consumer_key        = "in6d6hAzrZR7kHndmbEJlYDj0"
+      config.consumer_secret     = "qGu2j1olTgUFj1SOIbeLC8ir6WKQlpFagUiuJHI9nx1k9poAb5"
+      config.access_token        = "4120758544-yXuOQj3MoMajzGJBA7MURJYK5batw6pcu6TyqwV"
+      config.access_token_secret = "RntyIjCItABYGiBalTBRlLtqnnNGOgFWYvtAre69oLF6H"
+    end
+    @tweets = @client.search("\"#{@book.name}\"", result_type: "recent").take(5)
+
   end
 
   def new
@@ -97,6 +105,120 @@ class BooksController < ApplicationController
       format.json { render :show, status: :ok, location: @book }
     end
   end
+
+
+  def rate_book
+    @book = Book.find(params[:id])
+    if rate_check
+      if params[:rating].to_f >=1 && params[:rating].to_f <=5 
+        current_user.rate!(@book, params[:rating])
+      end
+    end
+    redirect_to @book
+  end
+
+  def rate_check
+
+    if Coletivo::Config.ratings_container.all.select{ |rat|  rat.rateable == @book && rat.person == current_user}.length == 0
+      return true
+    else
+      return false
+    end
+
+  end
+
+  def rate_average
+    @book = Book.find(params[:id])
+    suma = 0
+    cantidad = 0 
+    Coletivo::Config.ratings_container.all.each do |rating|   
+      if rating.rateable == @book 
+        suma = suma +rating.weight 
+        cantidad = cantidad +1 
+      end
+    end 
+    if cantidad == 0
+      return 0
+    end
+    return suma/cantidad
+  end
+  helper_method :rate_average
+
+  def recommend
+    @book = Book.find(params[:id])
+    @words = @book.tags
+    @books = Book.all.to_a
+    @books.map! do |this_book|
+      this_book.define_singleton_method(:jaccard_index) do @jaccard_index;  end
+
+      this_book.define_singleton_method("jaccard_index=") do |index|
+        @jaccard_index = index || 0.0
+      end
+
+      intersection = (@words & this_book.tags).size
+      union = (@words | this_book.tags).size
+
+      this_book.jaccard_index = (intersection.to_f / union.to_f) rescue 0.0
+      this_book
+
+    end
+    @books.sort_by!{ |book| 1 - book.jaccard_index }
+    @books = @books [0..9]
+  end
+
+  # def convert
+  #   @current_format = File.extname(@book.document.path).gsub('.','')
+  #   @response = HTTParty.post('https://api.cloudconvert.com/process',
+  #   body: {
+  #     apikey: "mcgo6n6wlB_vfGnPwjiuxkytOtV3PIs3A1MmC-DJescayEgxqKYHu4_HWAfsCqmKssG4hdOO8K4AZnSM51oz8A",
+  #     inputformat: @current_format,
+  #     outputformat: @output_format}.to_json,
+  #   :headers => {
+  #       'Content-Type' => 'application/json',
+  #       'Accept' => 'application/json'
+  #   })
+  #   @upload = HTTParty.post(@response['url'],
+  #   body: {
+  #   input: "upload",
+  #   outputformat: @output_format,
+  #   save: true}.to_json,
+  #   :headers => {
+  #       'Content-Type' => 'application/json',
+  #       'Accept' => 'application/json'
+  #   })
+  #   HTTMultiParty.put(@upload['upload']['url'] + '/' + File.basename(@book.document.path), :query => {
+  #     'file' =>  File.new(@book.document.path)})
+  #   @conversion = Convertion.new(user_id: current_user.id, convertion_url: @response['url'], name: @book.name)
+  #   @conversion.save
+  #   redirect_to @book, notice: 'Book added to your conversions'
+  # end
+
+  def convert
+    @current_format = File.extname(@book.document.path).gsub('.','')
+    @response = HTTParty.post('https://api.cloudconvert.com/process',
+    body: {
+      apikey: "mcgo6n6wlB_vfGnPwjiuxkytOtV3PIs3A1MmC-DJescayEgxqKYHu4_HWAfsCqmKssG4hdOO8K4AZnSM51oz8A",
+      inputformat: @current_format,
+      outputformat: @output_format}.to_json,
+    :headers => {
+        'Content-Type' => 'application/json',
+        'Accept' => 'application/json'
+    })
+    @upload = HTTParty.post(@response['url'],
+    body: {
+    input: "download",
+    file: @book.document.path,
+    outputformat: @output_format,
+    save: true}.to_json,
+    :headers => {
+        'Content-Type' => 'application/json',
+        'Accept' => 'application/json'
+    })
+    @conversion = Convertion.new(user_id: current_user.id, convertion_url: @response['url'], name: @book.name)
+    @conversion.save
+    redirect_to @book, notice: 'Book added to your conversions'
+  end
+
 
   # Initial form for searching (we add this so we can make the tag grid).
   def search_form

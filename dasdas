@@ -1,0 +1,15 @@
+                                       Table "public.person_ratings"
+    Column     |            Type             |                          Modifiers                          
+---------------+-----------------------------+-------------------------------------------------------------
+ id            | integer                     | not null default nextval('person_ratings_id_seq'::regclass)
+ person_id     | integer                     | 
+ person_type   | character varying           | 
+ rateable_id   | integer                     | 
+ rateable_type | character varying           | 
+ weight        | numeric(5,2)                | 
+ created_at    | timestamp without time zone | 
+ updated_at    | timestamp without time zone | 
+Indexes:
+    "person_ratings_pkey" PRIMARY KEY, btree (id)
+    "index_person_ratings_on_rateable_type" btree (rateable_type)
+
