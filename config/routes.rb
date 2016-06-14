@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   get 'books/:id/send_form' => 'books#send_form', as: :send_form
   post 'books/:id/send_book' => 'books#send_book', as: :send_book
   get 'books/:id/download_book' => 'books#download_book', as: :download_book
+  get 'books/:id/create_preview' => 'convertions#create_preview', as: :create_preview
   get 'users/ban/:id' => 'users#ban', as: :ban_user
   get 'users/unban/:id' => 'users#unban', as: :unban_user
   get 'users/upgrade/:id' => 'users#upgrade', as: :upgrade_user

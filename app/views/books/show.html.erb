@@ -7,8 +7,10 @@
     <h1 class="center book-title">
       <% if @formato == "pdf" %>
         <%= link_to @book.name + ' - ' + @book.author, pdfjs.full_path(file: @book.document.url) %>
-        <% elsif @formato == "epub" %>
-      <%= link_to @book.name + ' - ' + @book.author, read_epub_path(@book) %>
+      <% elsif @formato == "epub" %>
+        <%= link_to @book.name + ' - ' + @book.author, read_epub_path(@book) %>
+      <% else %>
+        <%= @book.name + ' - ' + @book.author %>
       <% end %>
           <% if (!current_user.books.include?(@book)) %>
           <%= link_to (fa_icon "plus", text: ""), add_to_library_path(@book) %>
@@ -19,6 +21,7 @@
               data: { confirm: 'Are you sure?' } %>
           <% end %>
     </h1>
+    <h3 class="center"><%= link_to '(This book has an unsupported format, click here to convert it)', create_preview_path(@book) %></h3>
   <div class="col-md-6 center">
     <% if @formato == "pdf"%>
       <%= link_to image_tag(@book.thumbnail(:medium), class: "book-preview"), pdfjs.full_path(file: @book.document.url) %>
@@ -26,7 +29,9 @@
       <%= @path %>
     <% elsif @formato == "epub"%>
       <%= link_to image_tag(@book.thumbnail(:medium), class: "book-preview"), read_epub_path(@book) %>
-    <% end%>
+    <% else %>
+      <%= image_tag(@book.thumbnail(:medium), class: "book-preview") %>
+    <% end %>
   </div>
   <div class="col-md-6 center">
     <% if current_user.admin? %>

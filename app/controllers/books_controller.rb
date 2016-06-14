@@ -9,8 +9,6 @@ class BooksController < ApplicationController
   def index
     @books = Book.public_books.paginate(page: params[:books_page], per_page: 9)
     @my_books = current_user.books.paginate(page: params[:my_books_page], per_page: 9)
-    @counter_public = 0
-    @counter_private = 0
   end
 
   def show

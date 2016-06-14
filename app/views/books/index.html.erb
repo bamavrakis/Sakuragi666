@@ -12,7 +12,6 @@
   <div class="c-tab is-active">
     <div class="c-tab__content">
       <% @books.each do |book| %>
-      <% @counter_public += 1 %>
       <div class="book col-lg-4 col-md-6 col-xs-6 ">
         <p class="text-center book-index-name">
           <%= link_to book.name, book, class: "book-link" %>
@@ -30,9 +29,6 @@
               class: "book-thumbnail"), book %>
         </p>
       </div>
-      <% if(@counter_public%3 == 0) %>
-      <div class="clearfix"></div>
-      <% end %>
       <% end %>
       <div class="clearfix"></div>
       <div class="will_paginate">
@@ -44,7 +40,6 @@
   <div class="c-tab">
     <div class="c-tab__content">
       <% @my_books.each do |book| %>
-      <% @counter_private += 1 %>
       <div class="book col-lg-4 col-md-5 col-xs-6 ">
         <p class="text-center book-index-name">
           <%= link_to book.name, book, class: "book-link" %>
@@ -59,9 +54,6 @@
               class: "book-thumbnail"), book %>
         </p>
       </div>
-      <% if(@counter_public%3 == 0) %>
-      <div class="clearfix"></div>
-      <% end %>
       <% end %>
       <div class="will_paginate">
         <%= will_paginate @my_books, :param_name => 'my_books_page' %>
