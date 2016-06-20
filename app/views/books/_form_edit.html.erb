@@ -42,11 +42,11 @@
         <% @tags.each do |t| %>
           <li>
             <div class="form-group">
-              <%= f.label t.name  %>
+              <%= f.label t.name, :class => "tag-name"  %>
               <% if @book.tags.include? t %>
-                <%= check_box_tag "tags[]", t.id, true %>
+                <%= check_box_tag("tags[]", t.id, true, {:class => "tag-box"}) %>
               <% else %>
-                <%= check_box_tag "tags[]", t.id, false %>
+                <%= check_box_tag("tags[]", t.id, false, {:class => "tag-box"}) %>
               <% end %>
             </div>
           </li>

@@ -40,8 +40,8 @@
         <% @tags.each do |t| %>
           <li>
             <div class="form-group">
-              <%= f.label t.name  %>
-              <%= check_box_tag "tags[]", t.id %>
+              <%= f.label t.name, :class => "tag-name"  %>
+              <%= check_box_tag("tags[]", t.id, false, {:class => "tag-box"}) %>
             </div>
           </li>
         <% end %>
