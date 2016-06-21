@@ -7,10 +7,10 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 require 'rmagick'
 
-file = File.open("app/assets/documents/test.pdf")
-pdf = Magick::ImageList.new("app/assets/documents/test.pdf")
-thumb = pdf.scale(340, 440)
-thumb.write "app/assets/documents/test.png"
+#file = File.open("app/assets/documents/test.pdf")
+#pdf = Magick::ImageList.new("app/assets/documents/test.pdf")
+#thumb = pdf.scale(340, 440)
+#thumb.write "app/assets/documents/test.png"
 User.create(email: "oscar@oscar.cl", name: "Oscar", last_name: "Estay", password: "password", password_confirmation: "password", avatar: File.new("app/assets/images/bad_joke.png"), admin: true)
 User.create(email: "germy@germy.cl", name: "German", last_name: "Contreras", password: "123456", password_confirmation: "123456", avatar: File.new("app/assets/images/bad_joke.png"), admin: true)
 User.create(email: "bastian@bastian.cl", name: "Bastian", last_name: "Mavrakis", password: "lalala", password_confirmation: "lalala", avatar: File.new("app/assets/images/bad_joke.png"), admin: false)
@@ -36,26 +36,26 @@ User.create(email: "ayako@ayako.jp", name: "Ayako", last_name: "Chan", password:
 @user10 = User.find(10)
 
 
-Book.create(uploader_id: 1, name: "Moby Dick", author: "Herman Melville", private: true, document: file, thumbnail: File.new("app/assets/documents/test.png"))
-Book.create(uploader_id: 1, name: "Frankenstein", author: "Mary Wollstonecraft Shelley", private: false, document: file, thumbnail: File.new("app/assets/documents/test.png"))
-Book.create(uploader_id: 2, name: "Ender's Game", author: "Orson Scott Card", private: true, document: file, thumbnail: File.new("app/assets/documents/test.png"))
-Book.create(uploader_id: 2, name: "Speaker for the Dead", author: "Orson Scott Card", private: false, document: file, thumbnail: File.new("app/assets/documents/test.png"))
-Book.create(uploader_id: 3, name: "The Metamorphosis", author: "Franz Kafka", private: true, document: file, thumbnail: File.new("app/assets/documents/test.png"))
-Book.create(uploader_id: 3, name: "The Name of the Wind", author: "Patrick Rothfuss", private: false, document: file, thumbnail: File.new("app/assets/documents/test.png"))
-Book.create(uploader_id: 4, name: "The Stranger", author: "Albert Camus", private: true, document: file, thumbnail: File.new("app/assets/documents/test.png"))
-Book.create(uploader_id: 4, name: "The Wise Man's Fear", author: "Patrick Rothfuss", private: false, document: file, thumbnail: File.new("app/assets/documents/test.png"))
-Book.create(uploader_id: 5, name: "One Piece Volume 1", author: "Eiichiro Oda", private: true, document: file, thumbnail: File.new("app/assets/documents/test.png"))
-Book.create(uploader_id: 5, name: "A Game of Thrones", author: "George R. R. Martin", private: false, document: file, thumbnail: File.new("app/assets/documents/test.png"))
-Book.create(uploader_id: 6, name: "Steppenwolf", author: "Herman Hesse", private: true, document: file, thumbnail: File.new("app/assets/documents/test.png"))
-Book.create(uploader_id: 6, name: "A Clash of Kings", author: "George R. R. Martin", private: false, document: file, thumbnail: File.new("app/assets/documents/test.png"))
-Book.create(uploader_id: 7, name: "Siddhartha", author: "Herman Hesse", private: true, document: file, thumbnail: File.new("app/assets/documents/test.png"))
-Book.create(uploader_id: 7, name: "A Storm of Swords", author: "George R. R. Martin", private: false, document: file, thumbnail: File.new("app/assets/documents/test.png"))
-Book.create(uploader_id: 8, name: "Demian", author: "Herman Hesse", private: true, document: file, thumbnail: File.new("app/assets/documents/test.png"))
-Book.create(uploader_id: 8, name: "A Feast for Crows", author: "George R. R. Martin", private: false, document: file, thumbnail: File.new("app/assets/documents/test.png"))
-Book.create(uploader_id: 9, name: "Brave New World", author: "Aldous Huxley", private: true, document: file, thumbnail: File.new("app/assets/documents/test.png"))
-Book.create(uploader_id: 9, name: "A Dance with Dragons", author: "George R. R. Martin", private: false, document: file, thumbnail: File.new("app/assets/documents/test.png"))
-Book.create(uploader_id: 10, name: "Animal Farm", author: "George Orwell", private: true, document: file, thumbnail: File.new("app/assets/documents/test.png"))
-Book.create(uploader_id: 10, name: "1984", author: "George Orwell", private: false, document: file, thumbnail: File.new("app/assets/documents/test.png"))
+Book.create(uploader_id: 1, name: "Moby Dick", author: "Herman Melville", private: true, document: File.open("app/assets/documents/books/mobydick.epub"), thumbnail: File.new("app/assets/documents/thumbnails/mobydick.png"))
+Book.create(uploader_id: 1, name: "Grimms' Fairy Tales", author: "Jacob Grimm and Wilhelm Grimm", private: false, document: File.open("app/assets/documents/books/grimmfairytales.pdf"), thumbnail: File.new("app/assets/documents/thumbnails/grimmfairytales.png"))
+Book.create(uploader_id: 2, name: "Ulysses", author: "James Joyce", private: true, document: File.open("app/assets/documents/books/ulysses.epub"), thumbnail: File.new("app/assets/documents/thumbnails/ulysses.jpg"))
+Book.create(uploader_id: 2, name: "The Practice and Science of Drawing", author: "Harold Speed", private: false, document: File.open("app/assets/documents/books/drawing.epub"), thumbnail: File.new("app/assets/documents/thumbnails/drawing.jpg"))
+Book.create(uploader_id: 3, name: "The Metamorphosis", author: "Franz Kafka", private: true, document: File.open("app/assets/documents/books/metamorphosis.epub"), thumbnail: File.new("app/assets/documents/thumbnails/metamorphosis.jpg"))
+Book.create(uploader_id: 3, name: "Calculus Made Easy", author: "Silvanus P. Thompson", private: false, document: File.open("app/assets/documents/books/calculus.pdf"), thumbnail: File.new("app/assets/documents/thumbnails/calculus.jpg"))
+Book.create(uploader_id: 4, name: "Adventures of Huckleberry Finn", author: "Mark Twain", private: true, document: File.open("app/assets/documents/books/huckleberry.epub"), thumbnail: File.new("app/assets/documents/thumbnails/huckleberry.jpg"))
+Book.create(uploader_id: 4, name: "Alice's Adventures in Wonderland", author: "Lewis Carroll", private: false, document: File.open("app/assets/documents/books/alice.pdf"), thumbnail: File.new("app/assets/documents/thumbnails/alice.jpg"))
+Book.create(uploader_id: 5, name: "The Strange Case of Dr. Jekyll and Mr. Hyde", author: "Robert Louis Stevenson", private: true, document: File.open("app/assets/documents/books/jekyll.epub"), thumbnail: File.new("app/assets/documents/thumbnails/jekyll.jpg"))
+Book.create(uploader_id: 5, name: "Pride and Prejudice", author: "Jane Austen", private: false, document: File.open("app/assets/documents/books/prideprejudice.pdf"), thumbnail: File.new("app/assets/documents/thumbnails/prideprejudice.jpg"))
+Book.create(uploader_id: 6, name: "Don Quixote", author: "Miguel de Cervantes Saavedra", private: true, document: File.open("app/assets/documents/books/quixote.epub"), thumbnail: File.new("app/assets/documents/thumbnails/quixote.jpg"))
+Book.create(uploader_id: 6, name: "Les Misérables", author: "Víctor Hugo", private: false, document: File.open("app/assets/documents/books/lesmiserables.epub"), thumbnail: File.new("app/assets/documents/thumbnails/lesmiserables.jpg"))
+Book.create(uploader_id: 7, name: "Siddhartha", author: "Herman Hesse", private: true, document: File.open("app/assets/documents/books/siddhartha.epub"), thumbnail: File.new("app/assets/documents/thumbnails/siddhartha.jpg"))
+Book.create(uploader_id: 7, name: "The Life and Adventures of Robinson Crusoe", author: "Daniel Defoe", private: false, document: File.open("app/assets/documents/books/crusoe.epub"), thumbnail: File.new("app/assets/documents/thumbnails/crusoe.jpg"))
+Book.create(uploader_id: 8, name: "The War of the Worlds", author: "H. G. Wells", private: true, document: File.open("app/assets/documents/books/warofworlds.epub"), thumbnail: File.new("app/assets/documents/thumbnails/warworlds.jpg"))
+Book.create(uploader_id: 8, name: "The Adventures of Sherlock Holmes", author: "Arthur Conan Doyle", private: false, document: File.open("app/assets/documents/books/sherlock.epub"), thumbnail: File.new("app/assets/documents/thumbnails/sherlock.jpg"))
+Book.create(uploader_id: 9, name: "Peter Pan", author: "J. M. Barrie", private: true, document: File.open("app/assets/documents/books/peterpan.epub"), thumbnail: File.new("app/assets/documents/thumbnails/peterpan.jpg"))
+Book.create(uploader_id: 9, name: "The Waste Land", author: "T. S. Eliot", private: false, document: File.open("app/assets/documents/books/wasteland.epub"), thumbnail: File.new("app/assets/documents/thumbnails/wasteland.jpg"))
+Book.create(uploader_id: 10, name: "War and Peace", author: "Leo Tolstoy", private: true, document: File.open("app/assets/documents/books/warpeace.epub"), thumbnail: File.new("app/assets/documents/thumbnails/warpeace.jpg"))
+Book.create(uploader_id: 10, name: "Adventures of Tom Sawyer", author: "Mark Twain", private: false, document: File.open("app/assets/documents/books/tomsawyer.epub"), thumbnail: File.new("app/assets/documents/thumbnails/tomsawyer.jpg"))
 
 
 Tag.create(name:"Science Fiction")
@@ -185,4 +185,5 @@ Book.all.each do |libro|
   end
 
 end
-file.close
+
+#file.close
