@@ -15,9 +15,7 @@
 //= require tether
 
 //= require bootstrap.min
-jQuery( function($) {
-    $('a').tooltip();
-});
+
 //= require_tree .
 //= require rails.validations
 
