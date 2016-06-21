@@ -30,7 +30,7 @@ class ConvertionsController < ApplicationController
   end
 
   def create_preview
-    @convertion_url = convert_book(@output_format, @book)
+    @convertion_url = convert_book('epub', @book)
     @response = HTTParty.get(@convertion_url)
     while(@response['step'] == 'finished') do
       sleep 1

@@ -15,9 +15,7 @@ class BooksController < ApplicationController
     @formato = File.extname(@book.document.path).gsub('.','')
     @supported_files = ['epub', 'mobi', 'azw3', 'pdf']
     @supported_files.delete(File.extname(@book.document.path).gsub('.',''))
-    if @formato == "mobi"
-      Mobi::Metadata.new(File.open(File.expand_path(@book.document.path)))
-    elsif @formato == "pdf"
+    if @formato == "pdf"
       @reader = PDF::Reader.new(open(@book.document.path))
     end
     @client = Twitter::REST::Client.new do |config|

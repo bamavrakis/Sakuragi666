@@ -34,7 +34,7 @@
                     </li>
                     <li>
                         <%= link_to convertions_path do %>
-                            <%= fa_icon "exchange", text: "Convertions" %>
+                            <%= fa_icon "exchange", text: "Conversions" %>
                             <% unless (current_user.convertions.ready.empty?) %>
                                 <span class="notification-label notification-label-green"><%= current_user.convertions.ready.length %></span>
                             <% end %>
