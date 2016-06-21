@@ -68,7 +68,7 @@
         <!-- /#sidebar-wrapper -->
         <div id="top-bar">
             <div class="top-bar-item">
-                <div id="nav-icon1" class="open">
+                <div id="nav-icon1" class="open" data-toggle="tooltip" title="Toggle Sidebar" data-placement="bottom" >
                     <span></span>
                     <span></span>
                     <span></span>
@@ -77,7 +77,7 @@
             <% if controller_name == "books" %>
                 <div class="top-bar-item">
                     <%= link_to (fa_icon "search 4x", text: ""),
-                    search_form_path, class: "search" %>
+                    search_form_path, class: "search", title: 'Edit', rel: 'tooltip', data: {placement: 'bottom' }  %>
                 </div>
             <% end %>
             <div class="clearfix"></div>
@@ -103,6 +103,9 @@
          $(this).toggleClass('open');
          e.preventDefault();
          $("#wrapper").toggleClass("toggled");
+     });
+     $(document).ready(function() {
+         $('#nav-icon1').tooltip();
      });
     </script>
 </body>

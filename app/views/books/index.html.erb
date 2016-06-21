@@ -12,12 +12,12 @@
         <p class="text-center book-index-name">
           <%= link_to book.name, book, class: "book-link" %>
           <% if (!current_user.books.include?(book)) %>
-          <%= link_to (fa_icon "plus", text: ""), add_to_library_path(book) %>
+          <%= link_to (fa_icon "plus", text: ""), add_to_library_path(book), title: 'Add to Library', rel: 'tooltip' %>
           <% end %>
           <% if(current_user.admin?) %>
-          <%= link_to (fa_icon "pencil", text: ""), edit_book_path(book) %>
+          <%= link_to (fa_icon "pencil", text: ""), edit_book_path(book), title: 'Edit', rel: 'tooltip' %>
           <%= link_to (fa_icon "times", text: ""), book, method: :delete,
-              data: { confirm: 'Are you sure?' } %>
+              data: { confirm: 'Are you sure?' }, title: 'Delete', rel: 'tooltip' %>
           <% end %>
         </p>
         <p class="center">
@@ -40,9 +40,9 @@
         <p class="text-center book-index-name">
           <%= link_to book.name, book, class: "book-link" %>
           <% if(current_user.admin? || (book.uploader == current_user && book.private)) %>
-          <%= link_to (fa_icon "pencil", text: ""), edit_book_path(book) %>
+          <%= link_to (fa_icon "pencil", text: ""), edit_book_path(book), title: 'Edit', rel: 'tooltip' %>
           <%= link_to (fa_icon "times", text: ""), book, method: :delete,
-              data: { confirm: 'Are you sure?' } %>
+              data: { confirm: 'Are you sure?' }, title: 'Delete', rel: 'tooltip' %>
           <% end %>
         </p>
         <p class="center">
