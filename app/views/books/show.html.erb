@@ -6,12 +6,12 @@
 <div class="row">
     <h1 class="center book-title">
       <% if @formato == "pdf" %>
-        <%= link_to @book.name + ' - ' + @book.author, pdfjs.full_path(file: @book.document.url) %>
+        <%= link_to @book.name + ' - ' + @book.author, pdfjs.full_path(file: @book.document.url), :target => "_blank"  %>
       <% elsif @formato == "epub" %>
         <%= link_to @book.name + ' - ' + @book.author, read_epub_path(@book) %>
       <% else %>
         <%= @book.name + ' - ' + @book.author %>
-        <h3 class="center"><%= link_to '(This book has an unsupported format, click here to convert it)', create_preview_path(@book) %></h3>
+        <h3 class="center"><%= link_to '(This book has an unsupported format, click here to convert it)', create_preview_path(@book), :target => "_blank" %></h3>
       <% end %>
           <% if (!current_user.books.include?(@book)) %>
           <%= link_to (fa_icon "plus", text: ""), add_to_library_path(@book) %>
@@ -25,11 +25,11 @@
     
   <div class="col-md-6 center">
     <% if @formato == "pdf"%>
-      <%= link_to image_tag(@book.thumbnail(:medium), class: "book-preview"), pdfjs.full_path(file: @book.document.url) %>
+      <%= link_to image_tag(@book.thumbnail(:medium), class: "book-preview"), pdfjs.full_path(file: @book.document.url), :target => "_blank" %>
       <%= @extended_path %>
       <%= @path %>
     <% elsif @formato == "epub"%>
-      <%= link_to image_tag(@book.thumbnail(:medium), class: "book-preview"), read_epub_path(@book) %>
+      <%= link_to image_tag(@book.thumbnail(:medium), class: "book-preview"), read_epub_path(@book), :target => "_blank" %>
     <% else %>
       <%= image_tag(@book.thumbnail(:medium), class: "book-preview") %>
     <% end %>
