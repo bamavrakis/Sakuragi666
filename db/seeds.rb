@@ -11,17 +11,24 @@ require 'rmagick'
 #pdf = Magick::ImageList.new("app/assets/documents/test.pdf")
 #thumb = pdf.scale(340, 440)
 #thumb.write "app/assets/documents/test.png"
-User.create(email: "oscar@oscar.cl", name: "Oscar", last_name: "Estay", password: "password", password_confirmation: "password", avatar: File.new("app/assets/images/bad_joke.png"), admin: true)
-User.create(email: "germy@germy.cl", name: "German", last_name: "Contreras", password: "123456", password_confirmation: "123456", avatar: File.new("app/assets/images/bad_joke.png"), admin: true)
-User.create(email: "bastian@bastian.cl", name: "Bastian", last_name: "Mavrakis", password: "lalala", password_confirmation: "lalala", avatar: File.new("app/assets/images/bad_joke.png"), admin: false)
-
-User.create(email: "sakuragi@sakuragi.jp", name: "Hanamichi", last_name: "Sakuragi", password: "haruko", password_confirmation: "haruko", avatar: File.new("app/assets/images/sakuragi.jpg"), admin: false)
-User.create(email: "rukawa@rukawa.jp", name: "Kaede", last_name: "Rukawa", password: "sleeping", password_confirmation: "sleeping", avatar: File.new("app/assets/images/rukawa.png"), admin: false)
-User.create(email: "akagi@akagi.jp", name: "Takenori", last_name: "Akagi", password: "banana", password_confirmation: "banana", avatar: File.new("app/assets/images/akagi.jpg"), admin: false)
-User.create(email: "kogure@kogure.jp", name: "Kiminobu", last_name: "Kogure", password: "glasses", password_confirmation: "glasses", avatar: File.new("app/assets/images/kogure.jpg"), admin: false)
-User.create(email: "miyagi@miyagi.jp", name: "Ryota", last_name: "Miyagi", password: "aya-chan", password_confirmation: "aya-chan", avatar: File.new("app/assets/images/miyagi.jpeg"), admin: false)
-User.create(email: "haruko@haruko.jp", name: "Haruko", last_name: "Akagi", password: "rukawa", password_confirmation: "rukawa", avatar: File.new("app/assets/images/haruko.jpg"), admin: false)
-User.create(email: "ayako@ayako.jp", name: "Ayako", last_name: "Chan", password: "manager", password_confirmation: "manager", avatar: File.new("app/assets/images/ayako.jpg"), admin: false)
+User.create(email: "oscar@oscar.cl", name: "Oscar", last_name: "Estay", password: "password", password_confirmation: "password", avatar: File.new("app/assets/images/users/oscar.jpg"), admin: true)
+User.create(email: "germy@germy.cl", name: "German", last_name: "Contreras", password: "123456", password_confirmation: "123456", avatar: File.new("app/assets/images/users/germy.jpg"), admin: true)
+User.create(email: "bastian@bastian.cl", name: "Bastian", last_name: "Mavrakis", password: "lalala", password_confirmation: "lalala", avatar: File.new("app/assets/images/users/bastian.jpg"), admin: false)
+User.create(email: "one@person.cl", name: "James", last_name: "King", password: "person1", password_confirmation: "person1", avatar: File.new("app/assets/images/users/one.png"), admin: false)
+User.create(email: "two@person.cl", name: "John", last_name: "Apple", password: "person2", password_confirmation: "person2", avatar: File.new("app/assets/images/users/two.jpeg"), admin: false)
+User.create(email: "three@person.cl", name: "Robert", last_name: "Smith", password: "person3", password_confirmation: "person3", avatar: File.new("app/assets/images/users/three.jpg"), admin: false)
+User.create(email: "four@person.cl", name: "Will", last_name: "Ford", password: "person4", password_confirmation: "person4", avatar: File.new("app/assets/images/users/four.jpg"), admin: false)
+User.create(email: "five@person.cl", name: "Jimmy", last_name: "Bellamy", password: "person5", password_confirmation: "person5", avatar: File.new("app/assets/images/users/five.jpg"), admin: false)
+User.create(email: "six@person.cl", name: "Jeremy", last_name: "Wolf", password: "person6", password_confirmation: "person6", avatar: File.new("app/assets/images/users/six.jpg"), admin: false)
+User.create(email: "seven@person.cl", name: "Dom", last_name: "Howard", password: "person7", password_confirmation: "person7", avatar: File.new("app/assets/images/users/seven.jpg"), admin: false)
+User.create(email: "eight@person.cl", name: "Hugh", last_name: "Reiner", password: "person8", password_confirmation: "person8", avatar: File.new("app/assets/images/users/eight.jpg"), admin: false)
+User.create(email: "nine@person.cl", name: "Rick", last_name: "Madison", password: "person9", password_confirmation: "person9", avatar: File.new("app/assets/images/users/nine.jpg"), admin: false)
+User.create(email: "ten@person.cl", name: "Adam", last_name: "Holland", password: "person10", password_confirmation: "person10", avatar: File.new("app/assets/images/users/ten.jpg"), admin: false)
+User.create(email: "eleven@person.cl", name: "Eve", last_name: "Collins", password: "person11", password_confirmation: "person11", avatar: File.new("app/assets/images/users/eleven.jpg"), admin: false)
+User.create(email: "twelve@person.cl", name: "Maria", last_name: "Abbey", password: "person12", password_confirmation: "person12", avatar: File.new("app/assets/images/users/twelve.jpg"), admin: false)
+User.create(email: "thirteen@person.cl", name: "Jane", last_name: "Cox", password: "person13", password_confirmation: "person13", avatar: File.new("app/assets/images/users/thirteen.jpg"), admin: false)
+User.create(email: "fourteen@person.cl", name: "Sophie", last_name: "Adams", password: "person14", password_confirmation: "person14", avatar: File.new("app/assets/images/users/fourteen.jpeg"), admin: false)
+User.create(email: "fifteen@person.cl", name: "Ellen", last_name: "Hardy", password: "person15", password_confirmation: "person15", avatar: File.new("app/assets/images/users/fifteen.jpg"), admin: false)
 
 
 @user1 = User.find(1)
@@ -34,7 +41,11 @@ User.create(email: "ayako@ayako.jp", name: "Ayako", last_name: "Chan", password:
 @user8 = User.find(8)
 @user9 = User.find(9)
 @user10 = User.find(10)
-
+@user11 = User.find(11)
+@user12 = User.find(12)
+@user13 = User.find(13)
+@user14 = User.find(14)
+@user15 = User.find(15)
 
 Book.create(uploader_id: 1, name: "Moby Dick", author: "Herman Melville", private: true, document: File.open("app/assets/documents/books/mobydick.epub"), thumbnail: File.new("app/assets/documents/thumbnails/mobydick.png"))
 Book.create(uploader_id: 1, name: "Grimms' Fairy Tales", author: "Jacob Grimm and Wilhelm Grimm", private: false, document: File.open("app/assets/documents/books/grimmfairytales.pdf"), thumbnail: File.new("app/assets/documents/thumbnails/grimmfairytales.png"))
@@ -47,15 +58,16 @@ Book.create(uploader_id: 4, name: "Alice's Adventures in Wonderland", author: "L
 Book.create(uploader_id: 5, name: "The Strange Case of Dr. Jekyll and Mr. Hyde", author: "Robert Louis Stevenson", private: true, document: File.open("app/assets/documents/books/jekyll.epub"), thumbnail: File.new("app/assets/documents/thumbnails/jekyll.jpg"))
 Book.create(uploader_id: 5, name: "Pride and Prejudice", author: "Jane Austen", private: false, document: File.open("app/assets/documents/books/prideprejudice.pdf"), thumbnail: File.new("app/assets/documents/thumbnails/prideprejudice.jpg"))
 Book.create(uploader_id: 6, name: "Don Quixote", author: "Miguel de Cervantes Saavedra", private: true, document: File.open("app/assets/documents/books/quixote.epub"), thumbnail: File.new("app/assets/documents/thumbnails/quixote.jpg"))
-Book.create(uploader_id: 6, name: "Les Misérables", author: "Víctor Hugo", private: false, document: File.open("app/assets/documents/books/lesmiserables.epub"), thumbnail: File.new("app/assets/documents/thumbnails/lesmiserables.jpg"))
-Book.create(uploader_id: 7, name: "Siddhartha", author: "Herman Hesse", private: true, document: File.open("app/assets/documents/books/siddhartha.epub"), thumbnail: File.new("app/assets/documents/thumbnails/siddhartha.jpg"))
-Book.create(uploader_id: 7, name: "The Life and Adventures of Robinson Crusoe", author: "Daniel Defoe", private: false, document: File.open("app/assets/documents/books/crusoe.epub"), thumbnail: File.new("app/assets/documents/thumbnails/crusoe.jpg"))
-Book.create(uploader_id: 8, name: "The War of the Worlds", author: "H. G. Wells", private: true, document: File.open("app/assets/documents/books/warofworlds.epub"), thumbnail: File.new("app/assets/documents/thumbnails/warworlds.jpg"))
-Book.create(uploader_id: 8, name: "The Adventures of Sherlock Holmes", author: "Arthur Conan Doyle", private: false, document: File.open("app/assets/documents/books/sherlock.epub"), thumbnail: File.new("app/assets/documents/thumbnails/sherlock.jpg"))
-Book.create(uploader_id: 9, name: "Peter Pan", author: "J. M. Barrie", private: true, document: File.open("app/assets/documents/books/peterpan.epub"), thumbnail: File.new("app/assets/documents/thumbnails/peterpan.jpg"))
-Book.create(uploader_id: 9, name: "The Waste Land", author: "T. S. Eliot", private: false, document: File.open("app/assets/documents/books/wasteland.epub"), thumbnail: File.new("app/assets/documents/thumbnails/wasteland.jpg"))
-Book.create(uploader_id: 10, name: "War and Peace", author: "Leo Tolstoy", private: true, document: File.open("app/assets/documents/books/warpeace.epub"), thumbnail: File.new("app/assets/documents/thumbnails/warpeace.jpg"))
-Book.create(uploader_id: 10, name: "Adventures of Tom Sawyer", author: "Mark Twain", private: false, document: File.open("app/assets/documents/books/tomsawyer.epub"), thumbnail: File.new("app/assets/documents/thumbnails/tomsawyer.jpg"))
+Book.create(uploader_id: 7, name: "Les Misérables", author: "Víctor Hugo", private: false, document: File.open("app/assets/documents/books/lesmiserables.epub"), thumbnail: File.new("app/assets/documents/thumbnails/lesmiserables.jpg"))
+Book.create(uploader_id: 8, name: "Siddhartha", author: "Herman Hesse", private: true, document: File.open("app/assets/documents/books/siddhartha.epub"), thumbnail: File.new("app/assets/documents/thumbnails/siddhartha.jpg"))
+Book.create(uploader_id: 9, name: "The Life and Adventures of Robinson Crusoe", author: "Daniel Defoe", private: false, document: File.open("app/assets/documents/books/crusoe.epub"), thumbnail: File.new("app/assets/documents/thumbnails/crusoe.jpg"))
+Book.create(uploader_id: 10, name: "The War of the Worlds", author: "H. G. Wells", private: true, document: File.open("app/assets/documents/books/warofworlds.epub"), thumbnail: File.new("app/assets/documents/thumbnails/warworlds.jpg"))
+Book.create(uploader_id: 11, name: "The Adventures of Sherlock Holmes", author: "Arthur Conan Doyle", private: false, document: File.open("app/assets/documents/books/sherlock.epub"), thumbnail: File.new("app/assets/documents/thumbnails/sherlock.jpg"))
+Book.create(uploader_id: 12, name: "Peter Pan", author: "J. M. Barrie", private: true, document: File.open("app/assets/documents/books/peterpan.epub"), thumbnail: File.new("app/assets/documents/thumbnails/peterpan.jpg"))
+Book.create(uploader_id: 13, name: "The Waste Land", author: "T. S. Eliot", private: false, document: File.open("app/assets/documents/books/wasteland.epub"), thumbnail: File.new("app/assets/documents/thumbnails/wasteland.jpg"))
+Book.create(uploader_id: 14, name: "War and Peace", author: "Leo Tolstoy", private: true, document: File.open("app/assets/documents/books/warpeace.epub"), thumbnail: File.new("app/assets/documents/thumbnails/warpeace.jpg"))
+Book.create(uploader_id: 15, name: "Adventures of Tom Sawyer", author: "Mark Twain", private: false, document: File.open("app/assets/documents/books/tomsawyer.epub"), thumbnail: File.new("app/assets/documents/thumbnails/tomsawyer.jpg"))
+Book.create(uploader_id: 4, name: "Unknown", author: "Unknown", private: false, document: File.open("app/assets/documents/books/illegal.pdf"))
 
 
 Tag.create(name:"Science Fiction")
@@ -135,6 +147,31 @@ end
   @user10.books << book
 end
 
+@books11 = @books.where('uploader_id = 11')
+@books11.each do |book|
+  @user11.books << book
+end
+
+@books12 = @books.where('uploader_id = 12')
+@books12.each do |book|
+  @user12.books << book
+end
+
+@books13 = @books.where('uploader_id = 13')
+@books13.each do |book|
+  @user13.books << book
+end
+
+@books14 = @books.where('uploader_id = 14')
+@books14.each do |book|
+  @user14.books << book
+end
+
+@books15 = @books.where('uploader_id = 15')
+@books15.each do |book|
+  @user15.books << book
+end
+
 @user1.books.each do |book|
   book.tags = @tags.sample(3)
 end
@@ -173,6 +210,26 @@ end
 end
 
 @user10.books.each do |book|
+  book.tags = @tags.sample(3)
+end
+
+@user11.books.each do |book|
+  book.tags = @tags.sample(3)
+end
+
+@user12.books.each do |book|
+  book.tags = @tags.sample(3)
+end
+
+@user13.books.each do |book|
+  book.tags = @tags.sample(3)
+end
+
+@user14.books.each do |book|
+  book.tags = @tags.sample(3)
+end
+
+@user15.books.each do |book|
   book.tags = @tags.sample(3)
 end
 
