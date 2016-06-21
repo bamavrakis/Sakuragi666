@@ -1,16 +1,13 @@
+<div class="row">
+<div class="text-center">
+
 <div id="send-form" class="form">
-
 <%= form_tag "/books/#{@book.id}/send_book" do %>
-
-<br>
-<br>
-<br>
 
 <div class="tag-title">
   <h2> Send the book "<%= @book.name %>" from author "<%= @book.author %>" to the following email: </h2>
 </div>
-
-<div class="receiver-email">
+<div class="form-group">
     <%= label_tag :email %><br>
     <%= text_field_tag :email %>
 </div>
@@ -19,13 +16,17 @@
   <h2> Add a message: </h2>
 </div>
 
-<div class="receiver-message">
+<div class="form-group">
     <%= label_tag :message %><br>
-    <%= text_field_tag :message %>
+    <%= text_area_tag :message %>
 </div>
 
 <div class="actions">
-    <%= submit_tag "Send", id: 'send_book_button' %>
+  <%= button_tag(type: "submit", class: "btn btn-default") do %>
+          Send
+      <% end %>
 </div>
 <% end %>
+</div>
+</div>
 </div>
