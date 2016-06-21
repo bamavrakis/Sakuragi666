@@ -1,0 +1,10 @@
+ftp> ftp> prompt
+?Invalid command
+ftp> ftp> mget *^C
+ftp> ^C
+ftp> s
+?Ambiguous command
+ftp> sdada
+?Invalid command
+ftp> 
+ftp> 

@@ -92,7 +92,7 @@
       <%= text_field_tag "rating"%>
       <%= submit_tag 'Rate Book' %>
     <% end %>
-    <%= link_to "People who read this book also liked", recomendations_path(@book)%>
+    <%= link_to "Similar Books", recommendations_path(@book)%>
     </div>
     <h3> Tweets about this book </h3>
     <%@tweets.each do |tweet|%>

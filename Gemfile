@@ -53,6 +53,7 @@ gem 'figaro'
 
 gem 'coletivo'
 gem 'twitter'
+gem 'recommendation'
 
 
 source 'https://rails-assets.org' do

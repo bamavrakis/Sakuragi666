@@ -83,6 +83,7 @@ Tag.create(name:"Biographies")
 # Add three random tags per book
 @books = Book.all
 @tags = Tag.all
+@users = User.all
 
 @books1 = @books.where('uploader_id = 1')
 @books1.each do |book|
@@ -176,16 +177,12 @@ end
 end
 
 Book.all.each do |libro|
-	@user1.rate!(libro,Random.new.rand(1..4))
-	@user2.rate!(libro,Random.new.rand(1..4))
-	@user3.rate!(libro,Random.new.rand(1..4))
-	@user4.rate!(libro,Random.new.rand(1..4))
-	@user5.rate!(libro,Random.new.rand(1..4))
-	@user6.rate!(libro,Random.new.rand(1..4))
-	@user7.rate!(libro,Random.new.rand(1..4))
-	@user8.rate!(libro,Random.new.rand(1..4))
-	@user9.rate!(libro,Random.new.rand(1..4))
-	@user10.rate!(libro,Random.new.rand(1..4))
+  User.all.each do |user|
+    if Random.new.rand(0..1) == 1
+  	 user.rate!(libro,Random.new.rand(1..5))
+    end
+
+  end
 
 end
 file.close

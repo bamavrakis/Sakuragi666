@@ -37,6 +37,7 @@
   </div>
   <div class="tag-grid">
     <ul class="tag-grid-ul">
+        <% if !@tags.nil?%>
         <% @tags.each do |t| %>
           <li>
             <div class="form-group">
@@ -45,6 +46,7 @@
             </div>
           </li>
         <% end %>
+        <%end%>
     </ul>
   </div>
 

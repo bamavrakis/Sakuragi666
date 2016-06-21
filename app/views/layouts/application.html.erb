@@ -41,7 +41,11 @@
           <% end %>
           <% end %>
         </li>
-
+        <% if current_user.present? %>
+        <li>
+          <%= link_to (fa_icon "plus-square", text: "Recommendations"), recommendate_path(@current_user) %>
+        </li>  
+        <% end %>      
         <% if current_user.admin? %>
         <li>
           <%= link_to (fa_icon "users", text: "Users"), users_path %>

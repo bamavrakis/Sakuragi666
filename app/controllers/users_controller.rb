@@ -49,10 +49,41 @@ class UsersController < ApplicationController
     end
   end
 
-  #def recommend
+  def recommend
+    #preferences = {}
+    #preferences_current = {}
+    #User.all.each do |user|
+    #  if user.email!= "oscar@oscar.cl"
+    #    preference = {}
+    #    pref = Coletivo::Config.ratings_container.select {|rating| user.id == rating.person_id}
+    #    pref.each do |prefe|
+    #      preference.merge!({prefe.rateable_id.to_s => prefe.weight.to_f})
+    #    end
+    #    preferences.merge!({user.email => preference})
+    #  end
 
-    #@recommended = find_recommendations_for(@current_user, :strategy => :pearson).paginate(page: params[:my_books_page], per_page: 9)
-  #end
+    #end
+    #preference = {}
+    #pref = Coletivo::Config.ratings_container.select {|rating| 1 == rating.person_id}
+    #  pref.each do |prefe|
+    #    preference.merge! ({prefe.rateable_id.to_s => prefe.weight.to_f})
+    #  end
+    #preferences_current.merge!({"oscar@oscar.cl" => preference})
+
+
+    #recommender = Recommendation::Recommender.new(preferences)
+    #recommender.train(preferences_current)
+    @recommended = Book.find_recommendations_for(current_user, :strategy => :pearson)
+    #recommended1 = Recommendation::Recommender.recommendation(recommender.table, current_user.email)
+    #@recommended = Books.all.select {|book| }
+
+
+    
+  end
 
 
 end
+
+
+
+
