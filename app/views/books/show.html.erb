@@ -13,12 +13,12 @@
         <%= @book.name + ' - ' + @book.author %>
       <% end %>
           <% if (!current_user.books.include?(@book)) %>
-          <%= link_to (fa_icon "plus", text: ""), add_to_library_path(@book) %>
+          <%= link_to (fa_icon "plus", text: ""), add_to_library_path(@book), title: 'Add to Library', rel: 'tooltip' %>
           <% end %>
           <% if(current_user.admin? || (@book.uploader == current_user && @book.private)) %>
-          <%= link_to (fa_icon "pencil", text: ""), edit_book_path(@book) %>
+          <%= link_to (fa_icon "pencil", text: ""), edit_book_path(@book), title: 'Edit', rel: 'tooltip' %>
           <%= link_to (fa_icon "times", text: ""), @book, method: :delete,
-              data: { confirm: 'Are you sure?' } %>
+              data: { confirm: 'Are you sure?' }, title: 'Delete', rel: 'tooltip' %>
           <% end %>
     </h1>
     <h3 class="center"><%= link_to '(This book has an unsupported format, click here to convert it)', create_preview_path(@book) %></h3>

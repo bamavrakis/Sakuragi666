@@ -2,7 +2,7 @@
 <h1 class="text-center">Users</h1>
 <div class="user-index">
     <% @users.each_slice(5).to_a[0].each do |user| %>
-  <div class="col-lg-3 col-md-3 col-xs-3">
+  <div class="col-lg-3 col-md-3 col-xs-4">
     <div class="user">
       <%= image_tag user.avatar.url(:thumb), class: 'user-thumb' %>
       <p>
