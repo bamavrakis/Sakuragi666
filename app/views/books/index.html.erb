@@ -1,7 +1,3 @@
-<div class="search-form">
-  <%= link_to (fa_icon "search 4x", text: ""), search_form_path,
-      class: "search" %>
-</div>
 <div class="clearfix"></div>
 <h1 class="text-center">Books</h1>
 <div id="tabs" class="c-tabs no-js">
@@ -16,14 +12,15 @@
         <p class="text-center book-index-name">
           <%= link_to book.name, book, class: "book-link" %>
           <% if (!current_user.books.include?(book)) %>
-          <%= link_to (fa_icon "plus", text: ""), add_to_library_path(book) %>
+          <%= link_to (fa_icon "plus", text: ""), add_to_library_path(book), title: 'Add to Library', rel: 'tooltip' %>
           <% end %>
           <% if(current_user.admin?) %>
-          <%= link_to (fa_icon "pencil", text: ""), edit_book_path(book) %>
+          <%= link_to (fa_icon "pencil", text: ""), edit_book_path(book), title: 'Edit', rel: 'tooltip' %>
           <%= link_to (fa_icon "times", text: ""), book, method: :delete,
-              data: { confirm: 'Are you sure?' } %>
+              data: { confirm: 'Are you sure?' }, title: 'Delete', rel: 'tooltip' %>
           <% end %>
         </p>
+        <div class="clearfix"></div>
         <p class="center">
           <%= link_to image_tag(book.thumbnail.url(:small),
               class: "book-thumbnail"), book %>
@@ -31,8 +28,8 @@
       </div>
       <% end %>
       <div class="clearfix"></div>
-      <div class="will_paginate">
-        <%= will_paginate @books, :param_name => 'books_page' %>
+      <div class="will_paginate text-center">
+        <%= will_paginate @books, :param_name => 'books_page', renderer: BootstrapPagination::Rails, class: "pagination pagination-centered" %>
       </div>
       <div class="clearfix"></div>
     </div>
@@ -44,9 +41,9 @@
         <p class="text-center book-index-name">
           <%= link_to book.name, book, class: "book-link" %>
           <% if(current_user.admin? || (book.uploader == current_user && book.private)) %>
-          <%= link_to (fa_icon "pencil", text: ""), edit_book_path(book) %>
+          <%= link_to (fa_icon "pencil", text: ""), edit_book_path(book), title: 'Edit', rel: 'tooltip' %>
           <%= link_to (fa_icon "times", text: ""), book, method: :delete,
-              data: { confirm: 'Are you sure?' } %>
+              data: { confirm: 'Are you sure?' }, title: 'Delete', rel: 'tooltip' %>
           <% end %>
         </p>
         <p class="center">

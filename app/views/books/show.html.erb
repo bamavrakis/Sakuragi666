@@ -1,7 +1,3 @@
-<div class="search-form">
-  <%= link_to (fa_icon "search 4x", text: ""), search_form_path,
-      class: "search" %>
-</div>
 <div class="clearfix"></div>
 <div class="row">
     <h1 class="center book-title">
@@ -14,12 +10,12 @@
         <h3 class="center"><%= link_to '(This book has an unsupported format, click here to convert it)', create_preview_path(@book), :target => "_blank" %></h3>
       <% end %>
           <% if (!current_user.books.include?(@book)) %>
-          <%= link_to (fa_icon "plus", text: ""), add_to_library_path(@book) %>
+          <%= link_to (fa_icon "plus", text: ""), add_to_library_path(@book), title: 'Add to Library', rel: 'tooltip' %>
           <% end %>
           <% if(current_user.admin? || (@book.uploader == current_user && @book.private)) %>
-          <%= link_to (fa_icon "pencil", text: ""), edit_book_path(@book) %>
+          <%= link_to (fa_icon "pencil", text: ""), edit_book_path(@book), title: 'Edit', rel: 'tooltip' %>
           <%= link_to (fa_icon "times", text: ""), @book, method: :delete,
-              data: { confirm: 'Are you sure?' } %>
+              data: { confirm: 'Are you sure?' }, title: 'Delete', rel: 'tooltip' %>
           <% end %>
     </h1>
     
@@ -84,9 +80,7 @@
 
     <h3> Rate Book</h3>
 
-
     <h5> Average Rating: <%= rate_average %> </h5>
-    
 
     <div>
     <%= form_tag( rate_book_path) do  %>
@@ -98,7 +92,6 @@
     <h3> Tweets about this book </h3>
     <%@tweets.each do |tweet|%>
       <p><font size="4"><%=tweet.user.screen_name%></font>:  <font size="2"><%=tweet.text%></font> </p>
-      
     <% end %>
   </div>
   <div class="clearfix"></div>

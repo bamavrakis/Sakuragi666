@@ -54,7 +54,7 @@ gem 'figaro'
 gem 'coletivo'
 gem 'twitter'
 gem 'recommendation'
-
+gem 'will_paginate-bootstrap'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.1.0'
