@@ -1,9 +1,8 @@
 <div class="clearfix"></div>
 <h1 class="text-center">Users</h1>
 <div class="user-index">
-  <div class="col-lg-3 col-md-3 col-xs-3">
-    <% if @users.count > 0 %>
     <% @users.each_slice(5).to_a[0].each do |user| %>
+  <div class="col-lg-3 col-md-3 col-xs-3">
     <div class="user">
       <%= image_tag user.avatar.url(:thumb), class: 'user-thumb' %>
       <p>
@@ -24,87 +23,8 @@
         <% end %>
       </p>
     </div>
-    <% end %>
-    <% end %>
   </div>
-  <div class="col-lg-3 col-md-3 col-xs-3 ">
-    <% if @users.count > 5 %>
-    <% @users.each_slice(5).to_a[1].each do |user| %>
-    <div class="user">
-      <p>
-        <%= image_tag user.avatar.url(:thumb), class: 'user-thumb' %>
-        <%= user.name %>
-        <% if user != current_user %>
-        <br>
-        <% if user.banned? %>
-        <%= link_to (fa_icon "plus-circle", text: "Unban", class: 'unban-button'), unban_user_path(user), class: 'unban-button' %>
-        <% else %>
-        <%= link_to (fa_icon "ban", text: "Ban", class: 'ban-button'), ban_user_path(user), class: 'ban-button' %>
-        <% end %>
-        <br>
-        <% if user.admin? %>
-        <%= link_to (fa_icon "arrow-circle-down", text: "Downgrade", class: 'downgrade-button'), downgrade_user_path(user), class: 'downgrade-button' %>
-        <% else %>
-        <%= link_to (fa_icon "arrow-circle-up", text: "Upgrade", class: 'upgrade-button'), upgrade_user_path(user), class: 'upgrade-button' %>
-        <% end %>
-        <% end %>
-      </p>
-    </div>
     <% end %>
-    <% end %>
-  </div>
-<div class="col-lg-3 col-md-3 col-xs-3 ">
-    <% if @users.count > 10 %>
-    <% @users.each_slice(5).to_a[2].each do |user| %>
-    <div class="user">
-      <p>
-        <%= image_tag user.avatar.url(:thumb), class: 'user-thumb' %>
-        <%= user.name %>
-        <% if user != current_user %>
-        <br>
-        <% if user.banned? %>
-        <%= link_to (fa_icon "plus-circle", text: "Unban", class: 'unban-button'), unban_user_path(user), class: 'unban-button' %>
-        <% else %>
-        <%= link_to (fa_icon "ban", text: "Ban", class: 'ban-button'), ban_user_path(user), class: 'ban-button' %>
-        <% end %>
-        <br>
-        <% if user.admin? %>
-        <%= link_to (fa_icon "arrow-circle-down", text: "Downgrade", class: 'downgrade-button'), downgrade_user_path(user), class: 'downgrade-button' %>
-        <% else %>
-        <%= link_to (fa_icon "arrow-circle-up", text: "Upgrade", class: 'upgrade-button'), upgrade_user_path(user), class: 'upgrade-button' %>
-        <% end %>
-        <% end %>
-      </p>
-    </div>
-    <% end %>
-    <% end %>
-  </div>
-<div class="col-lg-3 col-md-3 col-xs-3 ">
-    <% if @users.count > 15 %>
-    <% @users.each_slice(5).to_a[3].each do |user| %>
-    <div class="user">
-      <p>
-        <%= image_tag user.avatar.url(:thumb), class: 'user-thumb' %>
-        <%= user.name %>
-        <% if user != current_user %>
-        <br>
-        <% if user.banned? %>
-        <%= link_to (fa_icon "plus-circle", text: "Unban", class: 'unban-button'), unban_user_path(user), class: 'unban-button' %>
-        <% else %>
-        <%= link_to (fa_icon "ban", text: "Ban", class: 'ban-button'), ban_user_path(user), class: 'ban-button' %>
-        <% end %>
-        <br>
-        <% if user.admin? %>
-        <%= link_to (fa_icon "arrow-circle-down", text: "Downgrade", class: 'downgrade-button'), downgrade_user_path(user), class: 'downgrade-button' %>
-        <% else %>
-        <%= link_to (fa_icon "arrow-circle-up", text: "Upgrade", class: 'upgrade-button'), upgrade_user_path(user), class: 'upgrade-button' %>
-        <% end %>
-        <% end %>
-      </p>
-    </div>
-    <% end %>
-    <% end %>
-  </div>
   <div class="will_paginate">
     <%= will_paginate @users, :param_name => 'users_page' %>
   </div>
